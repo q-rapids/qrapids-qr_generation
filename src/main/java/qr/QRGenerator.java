@@ -16,12 +16,12 @@ public class QRGenerator {
     }
 
     public boolean existsQRPattern(Alert alert){
-        QRPlist = qrPatternsRepository.getQRPatterns(alert.getId_element());
+        QRPlist = qrPatternsRepository.getQRPatterns(alert.getCategory());
         return !QRPlist.isEmpty();
     }
 
     public List<QualityRequirementPattern> generateQRs(Alert alert){
-        QRPlist = qrPatternsRepository.getQRPatterns(alert.getId_element());
+        QRPlist = qrPatternsRepository.getQRPatterns(alert.getCategory());
         return QRPlist;
     }
 }
