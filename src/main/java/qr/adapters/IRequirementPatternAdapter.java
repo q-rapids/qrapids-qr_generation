@@ -1,6 +1,7 @@
 package qr.adapters;
 
 import qr.models.QualityRequirementPattern;
+import qr.models.Schema;
 
 import java.util.List;
 
@@ -15,4 +16,6 @@ public interface IRequirementPatternAdapter {
     public List<QualityRequirementPattern> getPatternsOfGivenClassifier(String name);
 
     public boolean importCatalogue(String json);
+
+    public Schema getSchemaByName(String name);
 }

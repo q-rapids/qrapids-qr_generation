@@ -2,8 +2,10 @@ package qr.adapters;
 
 import com.google.gson.Gson;
 import qr.adapters.models.QRPatternServer;
+import qr.adapters.models.SchemaServer;
 import qr.adapters.remote.SOServices;
 import qr.models.QualityRequirementPattern;
+import qr.models.Schema;
 import retrofit2.Response;
 import com.google.gson.JsonObject;
 
@@ -26,7 +28,7 @@ public class RequirementPatternAdapterImpl implements IRequirementPatternAdapter
     public List<QualityRequirementPattern> getAllRequirementPatterns() {
         List<QRPatternServer> l = null;
         try {
-            Response<List<QRPatternServer>> s = mServices.getAllPatterns().execute();
+            Response<List<QRPatternServer>> s = mServices.getAllPatterns(true).execute();
             l = s.body();
         } catch (IOException e) {
             System.err.println("Exception on gettingPatternByID");
@@ -53,14 +55,14 @@ public class RequirementPatternAdapterImpl implements IRequirementPatternAdapter
     public List<QualityRequirementPattern> getPatternsOfGivenClassifier(String name) {
         List<QRPatternServer> l = null;
         List<QualityRequirementPattern> l2 = new ArrayList<>();
-        String SchemaName = "Schema Q-rapids";//TODO change to the select schema by Q-rapids
-        String RootClassifierName = "Root"; //TODO change to the selected rootClassifier
+        //String SchemaName = "Schema Q-rapids";//TODO change to the select schema by Q-rapids
+        //String RootClassifierName = "Root"; //TODO change to the selected rootClassifier
         List<String> ls = new ArrayList<>();
-        ls.add(SchemaName);
-        ls.add(RootClassifierName);
+        //ls.add(SchemaName);
+        //ls.add(RootClassifierName);
         ls.add(name);
         try {
-            Response<List<QRPatternServer>> s = mServices.getPatternsOfGivenClassifier(ls, true).execute();
+            Response<List<QRPatternServer>> s = mServices.getPatternsOfGivenClassifier(ls, true, true).execute();
             l = s.body();
         } catch (IOException e) {
             System.err.println("Exception on gettingPatternByID");
@@ -86,6 +88,22 @@ public class RequirementPatternAdapterImpl implements IRequirementPatternAdapter
 
 
         return b;
+    }
+
+    @Override
+    public Schema getSchemaByName(String name) {
+        Schema schema = null;
+        try {
+            List<String> names = new ArrayList<>();
+            names.add(name);
+            Response<List<SchemaServer>> response = mServices.getSchemaByName(names).execute();
+            List<SchemaServer> schemasServer = response.body();
+            schema = schemasServer.get(0).toGenericModel();
+        } catch (IOException e) {
+            System.err.println("Exception on getSchemaByName");
+            e.printStackTrace();
+        }
+        return schema;
     }
 
     private List<QualityRequirementPattern> toGenericList(List<QRPatternServer> l) {

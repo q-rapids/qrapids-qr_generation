@@ -4,8 +4,10 @@ import qr.adapters.IRequirementPatternAdapter;
 import qr.adapters.RequirementPatternAdapterImpl;
 import qr.adapters.remote.ApiUtils;
 import qr.adapters.remote.SOServices;
+import qr.models.Classifier;
 import qr.models.Param;
 import qr.models.QualityRequirementPattern;
+import qr.models.Schema;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +26,29 @@ public class QRPatternsRepository {
 
     public List<QualityRequirementPattern> getQRPatterns(String id) {
         return ir.getPatternsOfGivenClassifier(id); //Call to the Interface to get the patterns related to the alert
+    }
+
+    public List<QualityRequirementPattern> getAllQRPatterns () {
+        return ir.getAllRequirementPatterns();
+    }
+
+    public QualityRequirementPattern getQRPattern(long id) {
+        return ir.getRequirementPatternByID(id);
+    }
+
+    public String getMetricForPattern(Integer id) {
+        List<String> metrics = new ArrayList<>();
+        Schema schema = ir.getSchemaByName("Schema Q-rapids");
+        for (Classifier rootClassifier : schema.getRootClassifiers()) {
+            for (Classifier internalClassifier1 : rootClassifier.getInternalClassifiers()) {
+                for (Classifier internalClassifier2 : internalClassifier1.getInternalClassifiers()) {
+                    if (internalClassifier2.hasRequirementPattern(id)) {
+                        metrics.add(internalClassifier2.getName());
+                    }
+                }
+            }
+        }
+        return metrics.get(0);
     }
 
     public boolean importCatalogue(String json){

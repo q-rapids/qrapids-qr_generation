@@ -3,6 +3,7 @@ package qr.adapters.remote;
 import com.google.gson.JsonObject;
 import qr.adapters.models.Forms;
 import qr.adapters.models.QRPatternServer;
+import qr.adapters.models.SchemaServer;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -17,17 +18,20 @@ public interface SOServices {
 
     //MEETINGS
     @GET("patterns")
-    Call<List<QRPatternServer>> getAllPatterns();
+    Call<List<QRPatternServer>> getAllPatterns(@Query("complete") boolean complete);
 
     @GET("patterns/{id}")
     Call<QRPatternServer> getAllPatterns(@Path("id") long id);
 
     @GET("patterns")
-    Call<List<QRPatternServer>> getPatternsOfGivenClassifier(@Query("namesList") List<String> name, @Query("complete") boolean complete);
+    Call<List<QRPatternServer>> getPatternsOfGivenClassifier(@Query("namesList") List<String> name, @Query("complete") boolean complete, @Query("completeClassifiers") boolean completeClassifiers);
 
     @Headers("Content-Type: application/json")
     @POST("catalogue")
     Call<Void> importCatalogue(@Body JsonObject json);
+
+    @GET("schemas")
+    Call<List<SchemaServer>> getSchemaByName(@Query("names") List<String> names);
 
 
 }
