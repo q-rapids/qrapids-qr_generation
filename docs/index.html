@@ -65,10 +65,394 @@
                 <img style="object-position: 50% center; width: 130px; height: 80px; object-fit: cover;" alt="" data-type="image" src="https://static.wixstatic.com/media/11d1c4_0916dc9585ae45d7b686cdce627595f8~mv2_d_2363_1576_s_2.jpg/v1/fill/w_130,h_80,al_c,q_80,usm_0.66_1.00_0.01/11d1c4_0916dc9585ae45d7b686cdce627595f8~mv2_d_2363_1576_s_2.jpg">
             </div>
         </div>
-		<p>
-		<br><br>
-		<h1 align="center">Under Construction!</h1>
-		</p>
+<p class=MsoCaption><span lang=EN-US>Table 17. class QRGenerator (QR Generator
+API)</span></p>
+
+<table class=Tabladecuadrcula1clara-nfasis11 border=1 cellspacing=0
+ cellpadding=0 width=0 style='width:492.7pt;border-collapse:collapse;
+ border:none'>
+ <tr>
+  <td width=236 valign=top style='width:176.95pt;border:solid #BDD6EE 1.0pt;
+  border-bottom:solid #9CC2E5 1.5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span lang=EN-GB>Method and result</span></b></p>
+  </td>
+  <td width=421 valign=top style='width:315.75pt;border-top:solid #BDD6EE 1.0pt;
+  border-left:none;border-bottom:solid #9CC2E5 1.5pt;border-right:solid #BDD6EE 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span lang=EN-GB>Description</span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=236 valign=top style='width:176.95pt;border:solid #BDD6EE 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=left style='margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:left;line-height:normal'><b><span lang=EN-GB>QRGenerator (String
+  urlBase)</span></b></p>
+  </td>
+  <td width=421 valign=top style='width:315.75pt;border-top:none;border-left:
+  none;border-bottom:solid #BDD6EE 1.0pt;border-right:solid #BDD6EE 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-GB>Class constructor, it requires a String defining the
+  base URL where PABRE is deployed (<i>urlBase</i> parameter).</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=236 valign=top style='width:176.95pt;border:solid #BDD6EE 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=left style='margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:left;line-height:normal'><b><span lang=EN-GB>existsQRPattern
+  (Alert alert)</span></b><span lang=EN-GB> <b>returns Boolean</b></span></p>
+  </td>
+  <td width=421 valign=top style='width:315.75pt;border-top:none;border-left:
+  none;border-bottom:solid #BDD6EE 1.0pt;border-right:solid #BDD6EE 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-GB>This method indicates whether or not the <i>alert</i>
+  passed as a parameter has an associated Quality Requirement pattern.</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=236 valign=top style='width:176.95pt;border:solid #BDD6EE 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=left style='margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:left;line-height:normal'><b><span lang=EN-GB>generateQRs (Alert
+  alert) returns</span></b></p>
+  <p class=MsoNormal align=left style='margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:left;line-height:normal'><b><span lang=EN-GB>QualityRequirementPattern[]</span></b></p>
+  </td>
+  <td width=421 valign=top style='width:315.75pt;border-top:none;border-left:
+  none;border-bottom:solid #BDD6EE 1.0pt;border-right:solid #BDD6EE 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-GB>This method returns the list of Quality Requirement
+  patterns associated with the <i>alert</i> passed as a parameter.</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal align=left style='text-align:left'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span lang=EN-GB>The
+following tables contain the data types used to transfer data with the library.</span></p>
+
+<p class=MsoCaption><span lang=EN-US>Table 18. Alert DTO (QR Generator API)</span></p>
+
+<table class=Tabladecuadrcula1clara-nfasis11 border=1 cellspacing=0
+ cellpadding=0 style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=87 valign=top style='width:63.1pt;border:solid #BDD6EE 1.0pt;
+  border-bottom:solid #9CC2E5 1.5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span lang=EN-GB>Attribute</span></b></p>
+  </td>
+  <td width=65 valign=top style='width:48.5pt;border-top:solid #BDD6EE 1.0pt;
+  border-left:none;border-bottom:solid #9CC2E5 1.5pt;border-right:solid #BDD6EE 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span lang=EN-GB>Type</span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=87 valign=top style='width:63.1pt;border:solid #BDD6EE 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span lang=EN-GB>Id_element</span></b></p>
+  </td>
+  <td width=65 valign=top style='width:48.5pt;border-top:none;border-left:none;
+  border-bottom:solid #BDD6EE 1.0pt;border-right:solid #BDD6EE 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-GB>String</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=87 valign=top style='width:63.1pt;border:solid #BDD6EE 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span lang=EN-GB>Name</span></b></p>
+  </td>
+  <td width=65 valign=top style='width:48.5pt;border-top:none;border-left:none;
+  border-bottom:solid #BDD6EE 1.0pt;border-right:solid #BDD6EE 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-GB>String</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=87 valign=top style='width:63.1pt;border:solid #BDD6EE 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span lang=EN-GB>Type</span></b></p>
+  </td>
+  <td width=65 valign=top style='width:48.5pt;border-top:none;border-left:none;
+  border-bottom:solid #BDD6EE 1.0pt;border-right:solid #BDD6EE 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-GB>Type</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=87 valign=top style='width:63.1pt;border:solid #BDD6EE 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span lang=EN-GB>Value</span></b></p>
+  </td>
+  <td width=65 valign=top style='width:48.5pt;border-top:none;border-left:none;
+  border-bottom:solid #BDD6EE 1.0pt;border-right:solid #BDD6EE 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-GB>Float</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=87 valign=top style='width:63.1pt;border:solid #BDD6EE 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span lang=EN-GB>Threshold</span></b></p>
+  </td>
+  <td width=65 valign=top style='width:48.5pt;border-top:none;border-left:none;
+  border-bottom:solid #BDD6EE 1.0pt;border-right:solid #BDD6EE 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-GB>Float</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=87 valign=top style='width:63.1pt;border:solid #BDD6EE 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span lang=EN-GB>Category</span></b></p>
+  </td>
+  <td width=65 valign=top style='width:48.5pt;border-top:none;border-left:none;
+  border-bottom:solid #BDD6EE 1.0pt;border-right:solid #BDD6EE 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-GB>String</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=87 valign=top style='width:63.1pt;border:solid #BDD6EE 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span lang=EN-GB>Artefacts</span></b></p>
+  </td>
+  <td width=65 valign=top style='width:48.5pt;border-top:none;border-left:none;
+  border-bottom:solid #BDD6EE 1.0pt;border-right:solid #BDD6EE 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-GB>Object[]</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='margin-top:12.0pt'><span lang=EN-GB>The enumeration
+values for the <b>type</b> attribute in Alert DTO are: <b>METRIC, FACTOR</b>,
+and <b>STRATEGIC_INDICATOR</b>.</span></p>
+
+<p class=MsoCaption><span lang=EN-US>Table 20. QualityRequirementPattern DTO (QR
+Generator API)</span></p>
+
+<table class=Tabladecuadrcula1clara-nfasis11 border=1 cellspacing=0
+ cellpadding=0 style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=93 valign=top style='width:69.35pt;border:solid #BDD6EE 1.0pt;
+  border-bottom:solid #9CC2E5 1.5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span lang=EN-GB>Attribute</span></b></p>
+  </td>
+  <td width=65 valign=top style='width:48.5pt;border-top:solid #BDD6EE 1.0pt;
+  border-left:none;border-bottom:solid #9CC2E5 1.5pt;border-right:solid #BDD6EE 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span lang=EN-GB>Type</span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=93 valign=top style='width:69.35pt;border:solid #BDD6EE 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span lang=EN-GB>Name</span></b></p>
+  </td>
+  <td width=65 valign=top style='width:48.5pt;border-top:none;border-left:none;
+  border-bottom:solid #BDD6EE 1.0pt;border-right:solid #BDD6EE 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-GB>String</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=93 valign=top style='width:69.35pt;border:solid #BDD6EE 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span lang=EN-GB>comments</span></b></p>
+  </td>
+  <td width=65 valign=top style='width:48.5pt;border-top:none;border-left:none;
+  border-bottom:solid #BDD6EE 1.0pt;border-right:solid #BDD6EE 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-GB>String</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=93 valign=top style='width:69.35pt;border:solid #BDD6EE 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span lang=EN-GB>description</span></b></p>
+  </td>
+  <td width=65 valign=top style='width:48.5pt;border-top:none;border-left:none;
+  border-bottom:solid #BDD6EE 1.0pt;border-right:solid #BDD6EE 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-GB>String</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=93 valign=top style='width:69.35pt;border:solid #BDD6EE 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span lang=EN-GB>Goal</span></b></p>
+  </td>
+  <td width=65 valign=top style='width:48.5pt;border-top:none;border-left:none;
+  border-bottom:solid #BDD6EE 1.0pt;border-right:solid #BDD6EE 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-GB>String</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=93 valign=top style='width:69.35pt;border:solid #BDD6EE 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span lang=EN-GB>Forms</span></b></p>
+  </td>
+  <td width=65 valign=top style='width:48.5pt;border-top:none;border-left:none;
+  border-bottom:solid #BDD6EE 1.0pt;border-right:solid #BDD6EE 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-GB>Form[]</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=93 valign=top style='width:69.35pt;border:solid #BDD6EE 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span lang=EN-GB>costFunction</span></b></p>
+  </td>
+  <td width=65 valign=top style='width:48.5pt;border-top:none;border-left:none;
+  border-bottom:solid #BDD6EE 1.0pt;border-right:solid #BDD6EE 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-GB>String</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoCaption><a name="_Toc528771947"><span lang=EN-US>Table </span></a><span lang=EN-US>19</span><span lang=EN-US>. Form DTO (QR Generator API)</span></p>
+
+<table class=Tabladecuadrcula1clara-nfasis11 border=1 cellspacing=0
+ cellpadding=0 style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=84 valign=top style='width:62.1pt;border:solid #BDD6EE 1.0pt;
+  border-bottom:solid #9CC2E5 1.5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span lang=EN-GB>Attribute</span></b></p>
+  </td>
+  <td width=72 valign=top style='width:52.9pt;border-top:solid #BDD6EE 1.0pt;
+  border-left:none;border-bottom:solid #9CC2E5 1.5pt;border-right:solid #BDD6EE 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span lang=EN-GB>Type</span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=84 valign=top style='width:62.1pt;border:solid #BDD6EE 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span lang=EN-GB>Name</span></b></p>
+  </td>
+  <td width=72 valign=top style='width:52.9pt;border-top:none;border-left:none;
+  border-bottom:solid #BDD6EE 1.0pt;border-right:solid #BDD6EE 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-GB>String</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=84 valign=top style='width:62.1pt;border:solid #BDD6EE 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span lang=EN-GB>description</span></b></p>
+  </td>
+  <td width=72 valign=top style='width:52.9pt;border-top:none;border-left:none;
+  border-bottom:solid #BDD6EE 1.0pt;border-right:solid #BDD6EE 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-GB>String</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=84 valign=top style='width:62.1pt;border:solid #BDD6EE 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span lang=EN-GB>comments</span></b></p>
+  </td>
+  <td width=72 valign=top style='width:52.9pt;border-top:none;border-left:none;
+  border-bottom:solid #BDD6EE 1.0pt;border-right:solid #BDD6EE 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-GB>String</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=84 valign=top style='width:62.1pt;border:solid #BDD6EE 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span lang=EN-GB>fixedPart</span></b></p>
+  </td>
+  <td width=72 valign=top style='width:52.9pt;border-top:none;border-left:none;
+  border-bottom:solid #BDD6EE 1.0pt;border-right:solid #BDD6EE 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-GB>FixedPart</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoCaption><span lang=EN-US>Table 22. FixedPart DTO (QR Generator API)</span></p>
+
+<table class=Tabladecuadrcula1clara-nfasis11 border=1 cellspacing=0
+ cellpadding=0 style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=78 valign=top style='width:58.35pt;border:solid #BDD6EE 1.0pt;
+  border-bottom:solid #9CC2E5 1.5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span lang=EN-GB>Attribute</span></b></p>
+  </td>
+  <td width=65 valign=top style='width:48.5pt;border-top:solid #BDD6EE 1.0pt;
+  border-left:none;border-bottom:solid #9CC2E5 1.5pt;border-right:solid #BDD6EE 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span lang=EN-GB>Type</span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=78 valign=top style='width:58.35pt;border:solid #BDD6EE 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span lang=EN-GB>formText</span></b></p>
+  </td>
+  <td width=65 valign=top style='width:48.5pt;border-top:none;border-left:none;
+  border-bottom:solid #BDD6EE 1.0pt;border-right:solid #BDD6EE 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span lang=EN-GB>String</span></p>
+  </td>
+ </tr>
+</table>
+
     </div>
 </body>
 </html>
