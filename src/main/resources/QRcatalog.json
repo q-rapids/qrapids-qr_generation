@@ -1,0 +1,811 @@
+{
+  "metrics": [{
+        "type": "integer",
+        "metric": {
+            "name": "Integer that represents a percentage",
+            "description": "Integer value that can have a percentage.",
+            "comments": "",
+            "minValue": 0,
+            "maxValue": 100
+        }
+    }],
+    "patterns": [
+     {
+        "name": "Fast tests build",
+        "description": "",
+        "comments": "",
+        "versions": [{
+            "versionDate": "09-10-2018 09:30:00",
+            "author": "Marc Oriol",
+            "goal": "Improve the testing status of the software system",
+            "numInstances": 0,
+            "available": true,
+            "statsNumInstances": 0,
+            "statsNumAssociates": 0,
+            "artifactsRelation": "",
+            "forms": [{
+                "name": "Fast tests build",
+                "description": "Ratio of fast unit tests (i.e. Unit tests that takes less than 5 minutes to execute) with respect to the total number of unit tests should be at least the given value in order to improve the testing status of the software system.",
+                "comments": "",
+                "author": "Marc Oriol",
+                "modificationDate": "09-10-2018 09:30:00",
+                "numInstances": 0,
+                "statsNumInstances": 0,
+                "statsNumAssociates": 0,
+                "pos": 0,
+                "available": true,
+                "fixedPart": {
+                    "patternText": "Ratio of fast unit tests should be at least %value%",
+                    "questionText": "",
+                    "numInstances": 0,
+                    "available": true,
+                    "statsNumInstances": 0,
+                    "artifactsRelation": "",
+                    "parameters": [{
+                        "name": "value",
+                        "correctnessCondition": "Stay between 0 and 100",
+                        "description": "value in percentage of the maximum percentage that can have the ratio of open/in progress",
+                        "metricName": "Integer that represents a percentage"
+                    }]
+                }
+
+            }]
+        }],
+        "editable": false
+    },
+    {
+        "name": "Passed tests",
+        "description": "",
+        "comments": "",
+        "versions": [{
+            "versionDate": "09-10-2018 09:30:00",
+            "author": "Marc Oriol",
+            "goal": "Improve the testing status of the software system",
+            "numInstances": 0,
+            "available": true,
+            "statsNumInstances": 0,
+            "statsNumAssociates": 0,
+            "artifactsRelation": "",
+            "forms": [{
+                "name": "Passed tests",
+                "description": "The percentage of passed automatic tests with respect to the total number of executed automatic tests should be at least the given value in order to improve the testing status of the software system.",
+                "comments": "",
+                "author": "Marc Oriol",
+                "modificationDate": "09-10-2018 09:30:00",
+                "numInstances": 0,
+                "statsNumInstances": 0,
+                "statsNumAssociates": 0,
+                "pos": 0,
+                "available": true,
+                "fixedPart": {
+                    "patternText": "The percentage of passed automatic tests should be at least  %value%",
+                    "questionText": "",
+                    "numInstances": 0,
+                    "available": true,
+                    "statsNumInstances": 0,
+                    "artifactsRelation": "",
+                    "parameters": [{
+                        "name": "value",
+                        "correctnessCondition": "Stay between 0 and 100",
+                        "description": "value in percentage of the maximum percentage that can have the ratio of open/in progress",
+                        "metricName": "Integer that represents a percentage"
+                    }]
+                }
+
+            }]
+        }],
+        "editable": false
+    },
+      {
+        "name": "Build stability",
+        "description": "",
+        "comments": "",
+        "versions": [{
+            "versionDate": "07-04-2019 18:00:00",
+            "author": "Marc Oriol",
+            "goal": "Improve the Product Stability",
+            "numInstances": 0,
+            "available": true,
+            "statsNumInstances": 0,
+            "statsNumAssociates": 0,
+            "artifactsRelation": "",
+            "forms": [{
+                "name": "Build stability",
+                "description": "(Please, add a description in PABRE to describe this QR pattern)",
+                "comments": "",
+                "author": "Marc Oriol",
+                "modificationDate": "09-10-2018 09:30:00",
+                "numInstances": 0,
+                "statsNumInstances": 0,
+                "statsNumAssociates": 0,
+                "pos": 0,
+                "available": true,
+                "fixedPart": {
+                    "patternText": "The build stability should be at least %value%",
+                    "questionText": "",
+                    "numInstances": 0,
+                    "available": true,
+                    "statsNumInstances": 0,
+                    "artifactsRelation": "",
+                    "parameters": [{
+                        "name": "value",
+                        "correctnessCondition": "Stay between 0 and 100",
+                        "description": "value in percentage",
+                        "metricName": "Integer that represents a percentage"
+                    }]
+                }
+
+            }]
+        }],
+        "editable": false
+    },
+    {
+        "name": "Critical issues",
+        "description": "",
+        "comments": "",
+        "versions": [{
+            "versionDate": "09-10-2018 09:30:00",
+            "author": "Marc Oriol",
+            "goal": "Improve the Product stability",
+            "numInstances": 0,
+            "available": true,
+            "statsNumInstances": 0,
+            "statsNumAssociates": 0,
+            "artifactsRelation": "",
+            "forms": [{
+                "name": "Critical issues",
+                "description": "The ratio of non-critical issues should be at least the given value in order to improve the stability of the product.",
+                "comments": "",
+                "author": "Marc Oriol",
+                "modificationDate": "09-10-2018 09:30:00",
+                "numInstances": 0,
+                "statsNumInstances": 0,
+                "statsNumAssociates": 0,
+                "pos": 0,
+                "available": true,
+                "fixedPart": {
+                    "patternText": "Ratio of non-critical issues should be at least %value%",
+                    "questionText": "",
+                    "numInstances": 0,
+                    "available": true,
+                    "statsNumInstances": 0,
+                    "artifactsRelation": "",
+                    "parameters": [{
+                        "name": "value",
+                        "correctnessCondition": "Stay between 0 and 100",
+                        "description": "value in percentage of the maximum percentage that can have the ratio of open/in progress",
+                        "metricName": "Integer that represents a percentage"
+                    }]
+                }
+
+            }]
+        }],
+        "editable": false
+    },
+    {
+        "name": "Complex files",
+        "description": "",
+        "comments": "",
+        "versions": [{
+            "versionDate": "09-10-2018 09:30:00",
+            "author": "Marc Oriol",
+            "goal": "Improve the quality of the source code",
+            "numInstances": 0,
+            "available": true,
+            "statsNumInstances": 0,
+            "statsNumAssociates": 0,
+            "artifactsRelation": "",
+            "forms": [{
+                "name": "Complex files",
+                "description": "Ratio of non-complex files (i.e. files  with a cyclomatic complexity below 15) with respect to the total number of files should be at least the given value in order to improve the quality of the source code.",
+                "comments": "",
+                "author": "Marc Oriol",
+                "modificationDate": "09-10-2018 09:30:00",
+                "numInstances": 0,
+                "statsNumInstances": 0,
+                "statsNumAssociates": 0,
+                "pos": 0,
+                "available": true,
+                "fixedPart": {
+                    "patternText": "Ratio of non-complex files should be at least %value%",
+                    "questionText": "",
+                    "numInstances": 0,
+                    "available": true,
+                    "statsNumInstances": 0,
+                    "artifactsRelation": "",
+                    "parameters": [{
+                        "name": "value",
+                        "correctnessCondition": "Stay between 0 and 100",
+                        "description": "value in percentage of the maximum percentage that can have the ratio of open/in progress",
+                        "metricName": "Integer that represents a percentage"
+                    }]
+                }
+
+            }]
+        }],
+        "editable": false
+    },
+
+
+    {
+        "name": "Commented files",
+        "description": "",
+        "comments": "",
+        "versions": [{
+            "versionDate": "09-10-2018 09:30:00",
+            "author": "Marc Oriol",
+            "goal": "Improve the quality of the source code",
+            "numInstances": 0,
+            "available": true,
+            "statsNumInstances": 0,
+            "statsNumAssociates": 0,
+            "artifactsRelation": "",
+            "forms": [{
+                "name": "Commented files",
+                "description": "The ratio of properly commented files (i.e. Files whose comment density is between 10% and 30%) with respect to the total number of files should be above the given value in order to improve the quality of the source code.",
+                "comments": "",
+                "author": "Marc Oriol",
+                "modificationDate": "09-10-2018 09:30:00",
+                "numInstances": 0,
+                "statsNumInstances": 0,
+                "statsNumAssociates": 0,
+                "pos": 0,
+                "available": true,
+                "fixedPart": {
+                    "patternText": "The ratio of properly commented files should be above %value%",
+                    "questionText": "",
+                    "numInstances": 0,
+                    "available": true,
+                    "statsNumInstances": 0,
+                    "artifactsRelation": "",
+                    "parameters": [{
+                        "name": "value",
+                        "correctnessCondition": "Stay between 0 and 100",
+                        "description": "value in percentage of the maximum percentage that can have the ratio of open/in progress",
+                        "metricName": "Integer that represents a percentage"
+                    }]
+                }
+
+            }]
+        }],
+        "editable": false
+    },
+    
+    
+    {
+        "name": "Duplications",
+        "description": "",
+        "comments": "",
+        "versions": [{
+            "versionDate": "09-10-2018 09:30:00",
+            "author": "Marc Oriol",
+            "goal": "Improve the quality of the source code",
+            "numInstances": 0,
+            "available": true,
+            "statsNumInstances": 0,
+            "statsNumAssociates": 0,
+            "artifactsRelation": "",
+            "forms": [{
+                "name": "Duplications",
+                "description": "The ratio of files without duplications (i.e. the duplicated lines of the file are below 5%) with respect to the total number of files should be at least the given value in order to improve the quality of the source code.",
+                "comments": "",
+                "author": "Marc Oriol",
+                "modificationDate": "09-10-2018 09:30:00",
+                "numInstances": 0,
+                "statsNumInstances": 0,
+                "statsNumAssociates": 0,
+                "pos": 0,
+                "available": true,
+                "fixedPart": {
+                    "patternText": "The ratio of files without duplications should be at least %value%",
+                    "questionText": "",
+                    "numInstances": 0,
+                    "available": true,
+                    "statsNumInstances": 0,
+                    "artifactsRelation": "",
+                    "parameters": [{
+                        "name": "value",
+                        "correctnessCondition": "Stay between 0 and 100",
+                        "description": "value in percentage of the maximum percentage that can have the ratio of open/in progress",
+                        "metricName": "Integer that represents a percentage"
+                    }]
+                }
+
+            }]
+        }],
+        "editable": false
+    } ,
+    {
+        "name": "Error identification",
+        "description": "",
+        "comments": "",
+        "versions": [{
+            "versionDate": "07-04-2019 18:00:00",
+            "author": "Marc Oriol",
+            "goal": "Improve the testing performance",
+            "numInstances": 0,
+            "available": true,
+            "statsNumInstances": 0,
+            "statsNumAssociates": 0,
+            "artifactsRelation": "",
+            "forms": [{
+                "name": "Error identification",
+                "description": "Error identification refer to the percentage of bugs identified in a given timeframe with respect to the total number of bugs",
+                "comments": "",
+                "author": "Marc Oriol",
+                "modificationDate": "09-10-2018 09:30:00",
+                "numInstances": 0,
+                "statsNumInstances": 0,
+                "statsNumAssociates": 0,
+                "pos": 0,
+                "available": true,
+                "fixedPart": {
+                    "patternText": "Error identification should be at least %value%",
+                    "questionText": "",
+                    "numInstances": 0,
+                    "available": true,
+                    "statsNumInstances": 0,
+                    "artifactsRelation": "",
+                    "parameters": [{
+                        "name": "value",
+                        "correctnessCondition": "Stay between 0 and 100",
+                        "description": "value in percentage",
+                        "metricName": "Integer that represents a percentage"
+                    }]
+                }
+
+            }]
+        }],
+        "editable": false
+    },	
+    {
+        "name": "Bug identification",
+        "description": "",
+        "comments": "",
+        "versions": [{
+            "versionDate": "07-04-2019 18:00:00",
+            "author": "Marc Oriol",
+            "goal": "Improve the testing performance",
+            "numInstances": 0,
+            "available": true,
+            "statsNumInstances": 0,
+            "statsNumAssociates": 0,
+            "artifactsRelation": "",
+            "forms": [{
+                "name": "Bug identification",
+                "description": "The percentage of bugs identified before the release date with respect to the total number of bugs identified should be at least the given value",
+                "comments": "",
+                "author": "Marc Oriol",
+                "modificationDate": "09-10-2018 09:30:00",
+                "numInstances": 0,
+                "statsNumInstances": 0,
+                "statsNumAssociates": 0,
+                "pos": 0,
+                "available": true,
+                "fixedPart": {
+                    "patternText": "Percentage of bugs identified before release date should be at least %value%",
+                    "questionText": "",
+                    "numInstances": 0,
+                    "available": true,
+                    "statsNumInstances": 0,
+                    "artifactsRelation": "",
+                    "parameters": [{
+                        "name": "value",
+                        "correctnessCondition": "Stay between 0 and 100",
+                        "description": "value in percentage",
+                        "metricName": "Integer that represents a percentage"
+                    }]
+                }
+
+            }]
+        }],
+        "editable": false
+    },	
+    {
+        "name": "Bug correction",
+        "description": "",
+        "comments": "",
+        "versions": [{
+            "versionDate": "07-04-2019 18:00:00",
+            "author": "Marc Oriol",
+            "goal": "Improve the testing performance",
+            "numInstances": 0,
+            "available": true,
+            "statsNumInstances": 0,
+            "statsNumAssociates": 0,
+            "artifactsRelation": "",
+            "forms": [{
+                "name": "Bug Correction",
+                "description": "Density of errors that were corrected within the last 90 days should be higher than the given threshold. This is computed by the ratio of corrected bugs to the total amount of reported bugs",
+                "comments": "",
+                "author": "Marc Oriol",
+                "modificationDate": "09-10-2018 09:30:00",
+                "numInstances": 0,
+                "statsNumInstances": 0,
+                "statsNumAssociates": 0,
+                "pos": 0,
+                "available": true,
+                "fixedPart": {
+                    "patternText": "Ratio of bug correction should be at least %value%",
+                    "questionText": "",
+                    "numInstances": 0,
+                    "available": true,
+                    "statsNumInstances": 0,
+                    "artifactsRelation": "",
+                    "parameters": [{
+                        "name": "value",
+                        "correctnessCondition": "Stay between 0 and 100",
+                        "description": "value in percentage",
+                        "metricName": "Integer that represents a percentage"
+                    }]
+                }
+
+            }]
+        }],
+        "editable": false
+    },
+
+    {
+        "name": "Bug leakage",
+        "description": "",
+        "comments": "",
+        "versions": [{
+            "versionDate": "07-04-2019 18:00:00",
+            "author": "Marc Oriol",
+            "goal": "Improve the testing performance",
+            "numInstances": 0,
+            "available": true,
+            "statsNumInstances": 0,
+            "statsNumAssociates": 0,
+            "artifactsRelation": "",
+            "forms": [{
+                "name": "Bug leakage",
+                "description": "Bug leakage is defined as the the ratio of bugs that were identified after the release.",
+                "comments": "",
+                "author": "Marc Oriol",
+                "modificationDate": "09-10-2018 09:30:00",
+                "numInstances": 0,
+                "statsNumInstances": 0,
+                "statsNumAssociates": 0,
+                "pos": 0,
+                "available": true,
+                "fixedPart": {
+                    "patternText": "The percentage of bugs identified before the release should be at least %value%",
+                    "questionText": "",
+                    "numInstances": 0,
+                    "available": true,
+                    "statsNumInstances": 0,
+                    "artifactsRelation": "",
+                    "parameters": [{
+                        "name": "value",
+                        "correctnessCondition": "Stay between 0 and 100",
+                        "description": "value in percentage",
+                        "metricName": "Integer that represents a percentage"
+                    }]
+                }
+
+            }]
+        }],
+        "editable": false
+    },
+    {
+        "name": "Issues completely specified",
+        "description": "",
+        "comments": "",
+        "versions": [{
+            "versionDate": "09-10-2018 09:30:00",
+            "author": "Marc Oriol",
+            "goal": "Improve the quality issues specification",
+            "numInstances": 0,
+            "available": true,
+            "statsNumInstances": 0,
+            "statsNumAssociates": 0,
+            "artifactsRelation": "",
+            "forms": [{
+                "name": "Issues completely specified",
+                "description": "Ratio of completely specified issues (i.e. Issues where the fields description and due date are not empty) with respect to the total number of issues should be above the given value in order to improve the specification of quality issues.",
+                "comments": "",
+                "author": "Marc Oriol",
+                "modificationDate": "09-10-2018 09:30:00",
+                "numInstances": 0,
+                "statsNumInstances": 0,
+                "statsNumAssociates": 0,
+                "pos": 0,
+                "available": true,
+                "fixedPart": {
+                    "patternText": "Ratio of completely specified issues should be above %value%",
+                    "questionText": "",
+                    "numInstances": 0,
+                    "available": true,
+                    "statsNumInstances": 0,
+                    "artifactsRelation": "",
+                    "parameters": [{
+                        "name": "value",
+                        "correctnessCondition": "Stay between 0 and 100",
+                        "description": "value in percentage of the maximum percentage that can have the ratio of open/in progress",
+                        "metricName": "Integer that represents a percentage"
+                    }]
+                }
+
+            }]
+        }],
+        "editable": false
+    },
+    {
+        "name": "Fulfilment of critical/blocker quality rules",
+        "description": "",
+        "comments": "",
+        "versions": [{
+            "versionDate": "09-10-2018 09:30:00",
+            "author": "Marc Oriol",
+            "goal": "Reduce the blocking code",
+            "numInstances": 0,
+            "available": true,
+            "statsNumInstances": 0,
+            "statsNumAssociates": 0,
+            "artifactsRelation": "",
+            "forms": [{
+                "name": "Fulfilment of critical/blocker quality rules",
+                "description": "Ratio of files without critical or blocker quality rule violations with respect to the total number of files should be at least the given value in order to reduce the blocking code.",
+                "comments": "",
+                "author": "Marc Oriol",
+                "modificationDate": "09-10-2018 09:30:00",
+                "numInstances": 0,
+                "statsNumInstances": 0,
+                "statsNumAssociates": 0,
+                "pos": 0,
+                "available": true,
+                "fixedPart": {
+                    "patternText": "Ratio of files without critical or blocker quality rule violations should be at least %value%",
+                    "questionText": "",
+                    "numInstances": 0,
+                    "available": true,
+                    "statsNumInstances": 0,
+                    "artifactsRelation": "",
+                    "parameters": [{
+                        "name": "value",
+                        "correctnessCondition": "Stay between 0 and 100",
+                        "description": "value in percentage of the maximum percentage that can have the ratio of open/in progress",
+                        "metricName": "Integer that represents a percentage"
+                    }]
+                }
+
+            }]
+        }],
+        "editable": false
+    }        
+    ],
+    "schemas": [{
+        "name": "Schema Q-rapids",
+        "description": "descripcion schema",
+        "comments": "",
+        "rootClassifiers": [{
+            "name": "Root",
+            "description": "",
+            "comments": "",
+            "sourcesByIdentifier": [],
+            "pos": 0,
+            "requirementPatterns": [],
+            "internalClassifiers": [
+            {
+                "name": "testingstatus",
+                "description": "",
+                "comments": "",
+                "sourcesByIdentifier": [],
+                "internalClassifiers": [
+					{
+						"name": "testperformance",
+						"description": "",
+						"comments": "",
+						"sourcesByIdentifier": [],
+						"internalClassifiers": [],
+						"pos": 0,
+						"requirementPatterns": ["Fast tests build"]
+					},			
+					{
+						"name": "testsuccess",
+						"description": "",
+						"comments": "",
+						"sourcesByIdentifier": [],
+						"internalClassifiers": [],
+						"pos": 1,
+						"requirementPatterns": ["Passed tests"]
+					}	
+				],
+                "pos": 0,
+                "requirementPatterns": []
+            },
+            {
+                "name": "productstability",
+                "description": "",
+                "comments": "",
+                "sourcesByIdentifier": [],
+                "internalClassifiers": [
+					{
+						"name": "testsuccess",
+						"description": "",
+						"comments": "",
+						"sourcesByIdentifier": [],
+						"internalClassifiers": [],
+						"pos": 0,
+						"requirementPatterns": ["Passed tests"]
+					},
+					{
+						"name": "buildstability",
+						"description": "",
+						"comments": "",
+						"sourcesByIdentifier": [],
+						"internalClassifiers": [],
+						"pos": 1,
+						"requirementPatterns": ["Build stability"]
+					},
+					{
+						"name": "criticalissuesratio",
+						"description": "",
+						"comments": "",
+						"sourcesByIdentifier": [],
+						"internalClassifiers": [],
+						"pos": 2,
+						"requirementPatterns": ["Critical issues"]
+					}
+				
+				],
+                "pos": 1,
+                "requirementPatterns": []
+            },
+            {
+                "name": "codequality",
+                "description": "",
+                "comments": "",
+                "sourcesByIdentifier": [],
+                "internalClassifiers": [
+					{
+						"name": "complexity",
+						"description": "",
+						"comments": "",
+						"sourcesByIdentifier": [],
+						"internalClassifiers": [],
+						"pos": 0,
+						"requirementPatterns": ["Complex files"]
+					},
+					
+					{
+						"name": "comments",
+						"description": "",
+						"comments": "",
+						"sourcesByIdentifier": [],
+						"internalClassifiers": [],
+						"pos": 1,
+						"requirementPatterns": ["Commented files"]
+					},
+					
+					{
+						"name": "duplication",
+						"description": "",
+						"comments": "",
+						"sourcesByIdentifier": [],
+						"internalClassifiers": [],
+						"pos": 2,
+						"requirementPatterns": ["Duplications"]
+					}					
+				],
+                "pos": 2,
+                "requirementPatterns": []
+            },			
+			{
+                "name": "testingperformance",
+                "description": "",
+                "comments": "",
+                "sourcesByIdentifier": [],
+                "internalClassifiers": [
+					{
+						"name": "erroridentification",
+						"description": "",
+						"comments": "",
+						"sourcesByIdentifier": [],
+						"internalClassifiers": [],
+						"pos": 0,
+						"requirementPatterns": ["Error identification"]
+					},
+					{
+						"name": "bugidentification",
+						"description": "",
+						"comments": "",
+						"sourcesByIdentifier": [],
+						"internalClassifiers": [],
+						"pos": 1,
+						"requirementPatterns": ["Bug identification"]
+					},
+					{
+						"name": "bugcorrection",
+						"description": "",
+						"comments": "",
+						"sourcesByIdentifier": [],
+						"internalClassifiers": [],
+						"pos": 2,
+						"requirementPatterns": ["Bug correction"]
+					},
+					{
+						"name": "fasttests",
+						"description": "",
+						"comments": "",
+						"sourcesByIdentifier": [],
+						"internalClassifiers": [],
+						"pos": 3,
+						"requirementPatterns": ["Fast tests build"]
+					},
+					{
+						"name": "bugleakage",
+						"description": "",
+						"comments": "",
+						"sourcesByIdentifier": [],
+						"internalClassifiers": [],
+						"pos": 4,
+						"requirementPatterns": ["Bug leakage"]
+					}
+				],
+                "requirementPatterns": [],		
+                "pos": 3
+            },
+            {
+                "name": "qualityissuesspecification",
+                "description": "",
+                "comments": "",
+                "sourcesByIdentifier": [],
+                "internalClassifiers": [
+					{
+						"name": "specificationtaskcompletion",
+						"description": "",
+						"comments": "",
+						"sourcesByIdentifier": [],
+						"internalClassifiers": [],
+						"pos": 0,
+						"requirementPatterns": ["Issues completely specified"]
+					}
+				],
+                "pos": 4,
+                "requirementPatterns": []
+            },			
+            {
+                "name": "softwarestability",
+                "description": "",
+                "comments": "",
+                "sourcesByIdentifier": [],
+                "internalClassifiers": [
+					{
+						"name": "specificationtaskcompletion",
+						"description": "",
+						"comments": "",
+						"sourcesByIdentifier": [],
+						"internalClassifiers": [],
+						"pos": 0,
+						"requirementPatterns": ["Issues completely specified"]
+					}
+				],
+                "pos": 5,
+                "requirementPatterns": []
+            },	
+            {
+                "name": "blockingcode",
+                "description": "",
+                "comments": "",
+                "sourcesByIdentifier": [],
+                "internalClassifiers": [
+					{
+						"name": "nonblockingfiles",
+						"description": "",
+						"comments": "",
+						"sourcesByIdentifier": [],
+						"internalClassifiers": [],
+						"pos": 0,
+						"requirementPatterns": ["Fulfilment of critical/blocker quality rules"]
+					} 					
+				],
+                "pos": 6,
+                "requirementPatterns": []
+            }  
+		
+            ]
+        }]
+    }]
+}
