@@ -1,6 +1,7 @@
 package qr;
 
 import qr.models.Alert;
+import qr.models.Classifier;
 import qr.repository.QRPatternsRepository;
 import qr.models.QualityRequirementPattern;
 
@@ -42,5 +43,10 @@ public class QRGenerator {
             metricForPatternMap.put(id, qrPatternsRepository.getMetricForPattern(id));
         }
         return metricForPatternMap;
+    }
+
+    public List<Classifier> getAllClassifiers() {
+        Classifier rootClassifier = qrPatternsRepository.getRootClassifier();
+        return rootClassifier.getInternalClassifiers();
     }
 }
