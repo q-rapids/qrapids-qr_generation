@@ -2,6 +2,7 @@ package qr.adapters;
 
 import com.google.gson.Gson;
 import qr.adapters.models.QRPatternServer;
+import qr.adapters.models.QRPatternServerEdit;
 import qr.adapters.models.SchemaServer;
 import qr.adapters.remote.SOServices;
 import qr.models.QualityRequirementPattern;
@@ -49,6 +50,24 @@ public class RequirementPatternAdapterImpl implements IRequirementPatternAdapter
             e.printStackTrace();
         }
         return s2 != null ? s2.toGenericModel() : null;
+    }
+
+    @Override
+    public void saveRequirementPattern(long id, QualityRequirementPattern editedPattern) {
+        QRPatternServer originalPattern = null;
+        try {
+            Response<QRPatternServer> s = mServices.getAllPatterns(id).execute();
+            originalPattern = s.body();
+
+            if(originalPattern != null) {
+                QRPatternServerEdit.PatternEdit p = new QRPatternServerEdit.PatternEdit(originalPattern);
+                p.updateValues(editedPattern);
+                mServices.updatePattern(id, p).execute();
+            }
+        } catch (IOException e) {
+            System.err.println("Exception on updatingPattern");
+            e.printStackTrace();
+        }
     }
 
     @Override

@@ -60,4 +60,7 @@ public class QRPatternsRepository {
         return ir.importCatalogue(json);
     }
 
+    public void saveQRPattern(long id, QualityRequirementPattern editedPattern) {
+        ir.saveRequirementPattern(id, editedPattern);
+    }
 }

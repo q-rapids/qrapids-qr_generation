@@ -3,6 +3,7 @@ package qr.adapters.remote;
 import com.google.gson.JsonObject;
 import qr.adapters.models.Forms;
 import qr.adapters.models.QRPatternServer;
+import qr.adapters.models.QRPatternServerEdit;
 import qr.adapters.models.SchemaServer;
 import retrofit2.Call;
 import retrofit2.http.*;
@@ -32,6 +33,10 @@ public interface SOServices {
 
     @GET("schemas")
     Call<List<SchemaServer>> getSchemaByName(@Query("names") List<String> names);
+
+    @Headers("Content-Type: application/json")
+    @PUT("patterns/{id}")
+    Call<Void> updatePattern(@Path("id") long id, @Body QRPatternServerEdit.PatternEdit pattern);
 
 
 }

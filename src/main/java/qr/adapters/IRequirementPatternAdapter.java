@@ -18,4 +18,6 @@ public interface IRequirementPatternAdapter {
     public boolean importCatalogue(String json);
 
     public Schema getSchemaByName(String name);
+
+    public void saveRequirementPattern(long id, QualityRequirementPattern editedPattern);
 }
