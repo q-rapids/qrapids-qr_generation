@@ -1,6 +1,7 @@
 package qr.adapters.remote;
 
 import com.google.gson.JsonObject;
+import qr.adapters.models.ClassifierServerEdit;
 import qr.adapters.models.Forms;
 import qr.adapters.models.QRPatternServer;
 import qr.adapters.models.QRPatternServerEdit;
@@ -35,8 +36,16 @@ public interface SOServices {
     Call<List<SchemaServer>> getSchemaByName(@Query("names") List<String> names);
 
     @Headers("Content-Type: application/json")
+    @POST("patterns")
+    Call<JsonObject> createPattern(@Body QRPatternServerEdit.PatternEdit pattern);
+
+    @Headers("Content-Type: application/json")
     @PUT("patterns/{id}")
     Call<Void> updatePattern(@Path("id") long id, @Body QRPatternServerEdit.PatternEdit pattern);
+
+    @Headers("Content-Type: application/json")
+    @PUT("schemas/{sid}/classifiers/{cid}")
+    Call<Void> updateClassifier(@Path("sid") long schemaId, @Path("cid") long classifierId, @Body ClassifierServerEdit classifier);
 
 
 }

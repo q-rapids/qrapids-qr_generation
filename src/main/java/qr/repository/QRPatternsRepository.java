@@ -60,7 +60,16 @@ public class QRPatternsRepository {
         return ir.importCatalogue(json);
     }
 
-    public void saveQRPattern(long id, QualityRequirementPattern editedPattern) {
-        ir.saveRequirementPattern(id, editedPattern);
+    public int createQRPattern(QualityRequirementPattern newPattern) {
+        return ir.createRequirementPattern(newPattern);
+    }
+
+    public void updateQRPattern(long id, QualityRequirementPattern editedPattern) {
+        ir.updateRequirementPattern(id, editedPattern);
+    }
+
+    public void updateClassifier(Integer id, String name, Integer pos, List<Integer> patternsList) {
+        Schema schema = ir.getSchemaByName("Schema Q-rapids");
+        ir.updateClassifier(schema.getId(), id, name, pos, patternsList);
     }
 }

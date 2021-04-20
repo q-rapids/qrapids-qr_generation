@@ -19,5 +19,9 @@ public interface IRequirementPatternAdapter {
 
     public Schema getSchemaByName(String name);
 
-    public void saveRequirementPattern(long id, QualityRequirementPattern editedPattern);
+    public int createRequirementPattern(QualityRequirementPattern newPattern);
+
+    public void updateRequirementPattern(long id, QualityRequirementPattern editedPattern);
+
+    public void updateClassifier(Integer schemaId, Integer id, String name, Integer pos, List<Integer> patternsList);
 }

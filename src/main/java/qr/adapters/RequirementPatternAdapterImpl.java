@@ -1,6 +1,7 @@
 package qr.adapters;
 
 import com.google.gson.Gson;
+import qr.adapters.models.ClassifierServerEdit;
 import qr.adapters.models.QRPatternServer;
 import qr.adapters.models.QRPatternServerEdit;
 import qr.adapters.models.SchemaServer;
@@ -53,7 +54,21 @@ public class RequirementPatternAdapterImpl implements IRequirementPatternAdapter
     }
 
     @Override
-    public void saveRequirementPattern(long id, QualityRequirementPattern editedPattern) {
+    public int createRequirementPattern(QualityRequirementPattern newPattern) {
+        QRPatternServerEdit.PatternEdit p = new QRPatternServerEdit.PatternEdit(newPattern);
+        Integer newId = null;
+        try {
+            Response<JsonObject> s = mServices.createPattern(p).execute();
+            newId = s.body().get("id").getAsInt();
+        } catch (IOException e) {
+            System.err.println("Exception on creatingPattern");
+            e.printStackTrace();
+        }
+        return newId;
+    }
+
+    @Override
+    public void updateRequirementPattern(long id, QualityRequirementPattern editedPattern) {
         QRPatternServer originalPattern = null;
         try {
             Response<QRPatternServer> s = mServices.getAllPatterns(id).execute();
@@ -66,6 +81,17 @@ public class RequirementPatternAdapterImpl implements IRequirementPatternAdapter
             }
         } catch (IOException e) {
             System.err.println("Exception on updatingPattern");
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void updateClassifier(Integer schemaId, Integer id, String name, Integer pos, List<Integer> patternsList) {
+        ClassifierServerEdit classifier = new ClassifierServerEdit(name, pos, patternsList);
+        try {
+            mServices.updateClassifier(schemaId, id, classifier).execute();
+        } catch (IOException e) {
+            System.err.println("Exception on updatingClassifier");
             e.printStackTrace();
         }
     }
