@@ -68,6 +68,10 @@ public class QRPatternsRepository {
         ir.updateRequirementPattern(id, editedPattern);
     }
 
+    public void deleteQRPattern(long id) {
+        ir.deleteRequirementPattern(id);
+    }
+
     public void updateClassifier(Integer id, String name, Integer pos, List<Integer> patternsList) {
         Schema schema = ir.getSchemaByName("Schema Q-rapids");
         ir.updateClassifier(schema.getId(), id, name, pos, patternsList);

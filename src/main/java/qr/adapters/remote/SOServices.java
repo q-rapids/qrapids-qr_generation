@@ -43,6 +43,9 @@ public interface SOServices {
     @PUT("patterns/{id}")
     Call<Void> updatePattern(@Path("id") long id, @Body QRPatternServerEdit.PatternEdit pattern);
 
+    @DELETE("patterns/{id}")
+    Call<Void> deletePattern(@Path("id") long id);
+
     @Headers("Content-Type: application/json")
     @PUT("schemas/{sid}/classifiers/{cid}")
     Call<Void> updateClassifier(@Path("sid") long schemaId, @Path("cid") long classifierId, @Body ClassifierServerEdit classifier);

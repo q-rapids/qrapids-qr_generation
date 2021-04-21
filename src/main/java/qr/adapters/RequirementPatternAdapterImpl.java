@@ -86,6 +86,16 @@ public class RequirementPatternAdapterImpl implements IRequirementPatternAdapter
     }
 
     @Override
+    public void deleteRequirementPattern(long id) {
+        try {
+            mServices.deletePattern(id).execute();
+        } catch (IOException e) {
+            System.err.println("Exception on deletingPattern");
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     public void updateClassifier(Integer schemaId, Integer id, String name, Integer pos, List<Integer> patternsList) {
         ClassifierServerEdit classifier = new ClassifierServerEdit(name, pos, patternsList);
         try {

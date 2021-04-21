@@ -58,6 +58,10 @@ public class QRGenerator {
         qrPatternsRepository.updateQRPattern(id, editedPattern);
     }
 
+    public void deleteQRPattern(long id) {
+        qrPatternsRepository.deleteQRPattern(id);
+    }
+
     public void updateClassifier (Integer id, String name, Integer pos, List<Integer> patternsList) {
         qrPatternsRepository.updateClassifier(id, name, pos, patternsList);
     }
