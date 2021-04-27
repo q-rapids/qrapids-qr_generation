@@ -1,9 +1,11 @@
 package qr.adapters;
 
 import com.google.gson.Gson;
+import qr.adapters.models.ClassifierServer;
 import qr.adapters.models.QRPatternServer;
 import qr.adapters.models.SchemaServer;
 import qr.adapters.remote.SOServices;
+import qr.models.Classifier;
 import qr.models.QualityRequirementPattern;
 import qr.models.Schema;
 import retrofit2.Response;
@@ -104,6 +106,19 @@ public class RequirementPatternAdapterImpl implements IRequirementPatternAdapter
             e.printStackTrace();
         }
         return schema;
+    }
+
+    @Override
+    public Classifier getClassifierById(long schemaId, long id) {
+        ClassifierServer classifier = null;
+        try {
+            Response<ClassifierServer> response = mServices.getClassifier(schemaId, id).execute();
+            classifier = response.body();
+        } catch (IOException e) {
+            System.err.println("Exception on gettingPatternByID");
+            e.printStackTrace();
+        }
+        return classifier != null ? classifier.toGenericModel() : null;
     }
 
     private List<QualityRequirementPattern> toGenericList(List<QRPatternServer> l) {

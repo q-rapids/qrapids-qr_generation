@@ -56,6 +56,11 @@ public class QRPatternsRepository {
         return schema.getRootClassifiers().get(0); //Supposing that there is only one root classifier
     }
 
+    public Classifier getClassifier(long id) {
+        Schema schema = ir.getSchemaByName("Schema Q-rapids");
+        return ir.getClassifierById(schema.getId(), id);
+    }
+
     public boolean importCatalogue(String json){
         return ir.importCatalogue(json);
     }

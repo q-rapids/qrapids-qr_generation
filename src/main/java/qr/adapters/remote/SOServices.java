@@ -1,6 +1,7 @@
 package qr.adapters.remote;
 
 import com.google.gson.JsonObject;
+import qr.adapters.models.ClassifierServer;
 import qr.adapters.models.Forms;
 import qr.adapters.models.QRPatternServer;
 import qr.adapters.models.SchemaServer;
@@ -32,6 +33,9 @@ public interface SOServices {
 
     @GET("schemas")
     Call<List<SchemaServer>> getSchemaByName(@Query("names") List<String> names);
+
+    @GET("schemas/{sid}/classifiers/{cid}")
+    Call<ClassifierServer> getClassifier(@Path("sid") long schemaId, @Path("cid") long classifierId);
 
 
 }

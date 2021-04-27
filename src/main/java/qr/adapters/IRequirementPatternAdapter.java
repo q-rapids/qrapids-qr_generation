@@ -1,5 +1,6 @@
 package qr.adapters;
 
+import qr.models.Classifier;
 import qr.models.QualityRequirementPattern;
 import qr.models.Schema;
 
@@ -18,4 +19,6 @@ public interface IRequirementPatternAdapter {
     public boolean importCatalogue(String json);
 
     public Schema getSchemaByName(String name);
+
+    public Classifier getClassifierById(long schemaId, long id);
 }

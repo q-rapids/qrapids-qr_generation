@@ -49,4 +49,8 @@ public class QRGenerator {
         Classifier rootClassifier = qrPatternsRepository.getRootClassifier();
         return rootClassifier.getInternalClassifiers();
     }
+
+    public Classifier getClassifier(long id) {
+        return qrPatternsRepository.getClassifier(id);
+    }
 }
