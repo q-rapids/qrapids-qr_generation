@@ -1,7 +1,9 @@
 package qr.adapters;
 
 import com.google.gson.Gson;
+import qr.adapters.models.ClassifierServerEdit;
 import qr.adapters.models.QRPatternServer;
+import qr.adapters.models.QRPatternServerEdit;
 import qr.adapters.models.SchemaServer;
 import qr.adapters.remote.SOServices;
 import qr.models.QualityRequirementPattern;
@@ -49,6 +51,59 @@ public class RequirementPatternAdapterImpl implements IRequirementPatternAdapter
             e.printStackTrace();
         }
         return s2 != null ? s2.toGenericModel() : null;
+    }
+
+    @Override
+    public int createRequirementPattern(QualityRequirementPattern newPattern) {
+        QRPatternServerEdit.PatternEdit p = new QRPatternServerEdit.PatternEdit(newPattern);
+        Integer newId = null;
+        try {
+            Response<JsonObject> s = mServices.createPattern(p).execute();
+            newId = s.body().get("id").getAsInt();
+        } catch (IOException e) {
+            System.err.println("Exception on creatingPattern");
+            e.printStackTrace();
+        }
+        return newId;
+    }
+
+    @Override
+    public void updateRequirementPattern(long id, QualityRequirementPattern editedPattern) {
+        QRPatternServer originalPattern = null;
+        try {
+            Response<QRPatternServer> s = mServices.getAllPatterns(id).execute();
+            originalPattern = s.body();
+
+            if(originalPattern != null) {
+                QRPatternServerEdit.PatternEdit p = new QRPatternServerEdit.PatternEdit(originalPattern);
+                p.updateValues(editedPattern);
+                mServices.updatePattern(id, p).execute();
+            }
+        } catch (IOException e) {
+            System.err.println("Exception on updatingPattern");
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void deleteRequirementPattern(long id) {
+        try {
+            mServices.deletePattern(id).execute();
+        } catch (IOException e) {
+            System.err.println("Exception on deletingPattern");
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void updateClassifier(Integer schemaId, Integer id, String name, Integer pos, List<Integer> patternsList) {
+        ClassifierServerEdit classifier = new ClassifierServerEdit(name, pos, patternsList);
+        try {
+            mServices.updateClassifier(schemaId, id, classifier).execute();
+        } catch (IOException e) {
+            System.err.println("Exception on updatingClassifier");
+            e.printStackTrace();
+        }
     }
 
     @Override

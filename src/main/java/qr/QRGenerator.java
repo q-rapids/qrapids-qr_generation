@@ -49,4 +49,20 @@ public class QRGenerator {
         Classifier rootClassifier = qrPatternsRepository.getRootClassifier();
         return rootClassifier.getInternalClassifiers();
     }
+
+    public int createQRPattern(QualityRequirementPattern newPattern) {
+        return qrPatternsRepository.createQRPattern(newPattern);
+    }
+
+    public void updateQRPattern(long id, QualityRequirementPattern editedPattern) {
+        qrPatternsRepository.updateQRPattern(id, editedPattern);
+    }
+
+    public void deleteQRPattern(long id) {
+        qrPatternsRepository.deleteQRPattern(id);
+    }
+
+    public void updateClassifier (Integer id, String name, Integer pos, List<Integer> patternsList) {
+        qrPatternsRepository.updateClassifier(id, name, pos, patternsList);
+    }
 }

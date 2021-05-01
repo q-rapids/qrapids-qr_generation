@@ -44,6 +44,10 @@ public class QRPatternServer implements IServerModel {
     @Expose
     private List<FormServer> forms;
 
+    @SerializedName("versions")
+    @Expose
+    private List<VersionServer> versions;
+
     @SerializedName("costFunction")
     @Expose
     private List<Map<String, String>> costFunction;
@@ -149,6 +153,14 @@ public class QRPatternServer implements IServerModel {
 
     public void setForms(List<FormServer> forms) {
         this.forms = forms;
+    }
+
+    public List<VersionServer> getVersions() {
+        return versions;
+    }
+
+    public void setVersions(List<VersionServer> versions) {
+        this.versions = versions;
     }
 
     public List<Map<String, String>> getCostFunction() {
