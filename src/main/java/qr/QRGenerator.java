@@ -73,4 +73,8 @@ public class QRGenerator {
     public void updateClassifier (Integer id, String name, Integer pos, List<Integer> patternsList) {
         qrPatternsRepository.updateClassifier(id, name, pos, patternsList);
     }
+
+    public void deleteClassifier(long id) {
+        qrPatternsRepository.deleteClassifier(id);
+    }
 }

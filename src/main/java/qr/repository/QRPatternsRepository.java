@@ -87,6 +87,24 @@ public class QRPatternsRepository {
         ir.updateClassifier(schema.getId(), id, name, pos, patternsList);
     }
 
+    public void deleteClassifier(long id) {
+        Schema schema = ir.getSchemaByName("Schema Q-rapids");
+        long parent = 0;
+        for (Classifier classifier : schema.getRootClassifiers().get(0).getInternalClassifiers()) {
+            if (classifier.getId() == id) {
+                parent = schema.getRootClassifiers().get(0).getId();
+            } else {
+                for (Classifier c2 : classifier.getInternalClassifiers()) {
+                    if (c2.getId() == id) {
+                        parent = classifier.getId();
+                        break;
+                    }
+                }
+            }
+        }
+        ir.deleteClassifier(schema.getId(), id, parent);
+    }
+
     public boolean importCatalogue(String json){
         return ir.importCatalogue(json);
     }

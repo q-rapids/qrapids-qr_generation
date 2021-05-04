@@ -185,27 +185,7 @@ public class RequirementPatternAdapterImpl implements IRequirementPatternAdapter
 
             List<ClassifierServerEdit> editedParentClassifiers = new ArrayList<>();
             for (ClassifierServer c1 : parent.getInternalClassifiersServer()) {
-                ClassifierServerEdit classifierEdit1 = new ClassifierServerEdit(c1.getName(), c1.getPos());
-                if (c1.getRequirementPatternsServer().isEmpty()) { //if contains classifiers
-                    List<ClassifierServerEdit> classifierEdit1List = new ArrayList<>();
-                    for (ClassifierServer c2 : c1.getInternalClassifiersServer()) {
-                        List<Integer> idPatterns = new ArrayList<>();
-                        for (QRPatternServer pattern : c2.getRequirementPatternsServer()) {
-                            idPatterns.add(pattern.getId());
-                        }
-                        ClassifierServerEdit classifierEdit2 = new ClassifierServerEdit(c2.getName(), c2.getPos());
-                        classifierEdit2.setRequirementPatternsId(idPatterns);
-                        classifierEdit1List.add(classifierEdit2);
-                    }
-                    classifierEdit1.setInternalClassifiers(classifierEdit1List);
-                } else { //if contains patterns
-                    List<Integer> idPatterns = new ArrayList<>();
-                    for (QRPatternServer pattern : c1.getRequirementPatternsServer()) {
-                        idPatterns.add(pattern.getId());
-                    }
-                    classifierEdit1.setRequirementPatternsId(idPatterns);
-                }
-                editedParentClassifiers.add(classifierEdit1);
+                editedParentClassifiers.add(toClassifierServerEdit(c1));
             }
 
             editedParentClassifiers.add(new ClassifierServerEdit(name, editedParentClassifiers.size()));
@@ -218,6 +198,46 @@ public class RequirementPatternAdapterImpl implements IRequirementPatternAdapter
             System.err.println("Exception on updatingClassifier");
             e.printStackTrace();
         }
+    }
+
+    public void deleteClassifier(long schemaId, long id, long parentId) {
+        try {
+            Response<ClassifierServer> response = mServices.getClassifier(schemaId, parentId).execute();
+            ClassifierServer parent = response.body();
+
+            List<ClassifierServerEdit> editedParentClassifiers = new ArrayList<>();
+            for (ClassifierServer c1 : parent.getInternalClassifiersServer()) {
+                if (c1.getId() != id) {
+                    editedParentClassifiers.add(toClassifierServerEdit(c1));
+                }
+            }
+
+            ClassifierServerEdit editedParent = new ClassifierServerEdit(parent.getName(), parent.getPos());
+            editedParent.setInternalClassifiers(editedParentClassifiers);
+
+            mServices.updateClassifier(schemaId, parentId, editedParent).execute();
+        } catch (IOException e) {
+            System.err.println("Exception on deletingClassifier");
+            e.printStackTrace();
+        }
+    }
+
+    private ClassifierServerEdit toClassifierServerEdit(ClassifierServer classifier) {
+        ClassifierServerEdit classifierEdit1 = new ClassifierServerEdit(classifier.getName(), classifier.getPos());
+        if (classifier.getRequirementPatternsServer().isEmpty()) { //if contains classifiers
+            List<ClassifierServerEdit> classifierEdit1List = new ArrayList<>();
+            for (ClassifierServer c2 : classifier.getInternalClassifiersServer()) {
+                classifierEdit1List.add(toClassifierServerEdit(c2));
+            }
+            classifierEdit1.setInternalClassifiers(classifierEdit1List);
+        } else { //if contains patterns
+            List<Integer> idPatterns = new ArrayList<>();
+            for (QRPatternServer pattern : classifier.getRequirementPatternsServer()) {
+                idPatterns.add(pattern.getId());
+            }
+            classifierEdit1.setRequirementPatternsId(idPatterns);
+        }
+        return classifierEdit1;
     }
 
     private List<QualityRequirementPattern> toGenericList(List<QRPatternServer> l) {
