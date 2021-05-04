@@ -51,20 +51,6 @@ public class QRPatternsRepository {
         return metrics.get(0);
     }
 
-    public Classifier getRootClassifier() {
-        Schema schema = ir.getSchemaByName("Schema Q-rapids");
-        return schema.getRootClassifiers().get(0); //Supposing that there is only one root classifier
-    }
-
-    public Classifier getClassifier(long id) {
-        Schema schema = ir.getSchemaByName("Schema Q-rapids");
-        return ir.getClassifierById(schema.getId(), id);
-    }
-
-    public boolean importCatalogue(String json){
-        return ir.importCatalogue(json);
-    }
-
     public int createQRPattern(QualityRequirementPattern newPattern) {
         return ir.createRequirementPattern(newPattern);
     }
@@ -77,8 +63,32 @@ public class QRPatternsRepository {
         ir.deleteRequirementPattern(id);
     }
 
+    public Classifier getRootClassifier() {
+        Schema schema = ir.getSchemaByName("Schema Q-rapids");
+        return schema.getRootClassifiers().get(0); //Supposing that there is only one root classifier
+    }
+
+    public Classifier getClassifier(long id) {
+        Schema schema = ir.getSchemaByName("Schema Q-rapids");
+        return ir.getClassifierById(schema.getId(), id);
+    }
+
+    public void createClassifier(String name, long parentId) {
+        Schema schema = ir.getSchemaByName("Schema Q-rapids");
+        long parent = parentId;
+        if (parent == -1) { //-1 means that parent is root classifier
+            parent = schema.getRootClassifiers().get(0).getId();
+        }
+        ir.createClassifier(schema.getId(), name, parent);
+    }
+
     public void updateClassifier(Integer id, String name, Integer pos, List<Integer> patternsList) {
         Schema schema = ir.getSchemaByName("Schema Q-rapids");
         ir.updateClassifier(schema.getId(), id, name, pos, patternsList);
     }
+
+    public boolean importCatalogue(String json){
+        return ir.importCatalogue(json);
+    }
+
 }

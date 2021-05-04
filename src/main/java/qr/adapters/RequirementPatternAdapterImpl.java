@@ -98,8 +98,9 @@ public class RequirementPatternAdapterImpl implements IRequirementPatternAdapter
     }
 
     @Override
-    public void updateClassifier(Integer schemaId, Integer id, String name, Integer pos, List<Integer> patternsList) {
-        ClassifierServerEdit classifier = new ClassifierServerEdit(name, pos, patternsList);
+    public void updateClassifier(long schemaId, long id, String name, Integer pos, List<Integer> patternsList) {
+        ClassifierServerEdit classifier = new ClassifierServerEdit(name, pos);
+        classifier.setRequirementPatternsId(patternsList);
         try {
             mServices.updateClassifier(schemaId, id, classifier).execute();
         } catch (IOException e) {
@@ -170,10 +171,53 @@ public class RequirementPatternAdapterImpl implements IRequirementPatternAdapter
             Response<ClassifierServer> response = mServices.getClassifier(schemaId, id).execute();
             classifier = response.body();
         } catch (IOException e) {
-            System.err.println("Exception on gettingPatternByID");
+            System.err.println("Exception on gettingClassifierByID");
             e.printStackTrace();
         }
         return classifier != null ? classifier.toGenericModel() : null;
+    }
+
+    @Override
+    public void createClassifier(long schemaId, String name, long parentId) {
+        try {
+            Response<ClassifierServer> response = mServices.getClassifier(schemaId, parentId).execute();
+            ClassifierServer parent = response.body();
+
+            List<ClassifierServerEdit> editedParentClassifiers = new ArrayList<>();
+            for (ClassifierServer c1 : parent.getInternalClassifiersServer()) {
+                ClassifierServerEdit classifierEdit1 = new ClassifierServerEdit(c1.getName(), c1.getPos());
+                if (c1.getRequirementPatternsServer().isEmpty()) { //if contains classifiers
+                    List<ClassifierServerEdit> classifierEdit1List = new ArrayList<>();
+                    for (ClassifierServer c2 : c1.getInternalClassifiersServer()) {
+                        List<Integer> idPatterns = new ArrayList<>();
+                        for (QRPatternServer pattern : c2.getRequirementPatternsServer()) {
+                            idPatterns.add(pattern.getId());
+                        }
+                        ClassifierServerEdit classifierEdit2 = new ClassifierServerEdit(c2.getName(), c2.getPos());
+                        classifierEdit2.setRequirementPatternsId(idPatterns);
+                        classifierEdit1List.add(classifierEdit2);
+                    }
+                    classifierEdit1.setInternalClassifiers(classifierEdit1List);
+                } else { //if contains patterns
+                    List<Integer> idPatterns = new ArrayList<>();
+                    for (QRPatternServer pattern : c1.getRequirementPatternsServer()) {
+                        idPatterns.add(pattern.getId());
+                    }
+                    classifierEdit1.setRequirementPatternsId(idPatterns);
+                }
+                editedParentClassifiers.add(classifierEdit1);
+            }
+
+            editedParentClassifiers.add(new ClassifierServerEdit(name, editedParentClassifiers.size()));
+
+            ClassifierServerEdit editedParent = new ClassifierServerEdit(parent.getName(), parent.getPos());
+            editedParent.setInternalClassifiers(editedParentClassifiers);
+
+            mServices.updateClassifier(schemaId, parentId, editedParent).execute();
+        } catch (IOException e) {
+            System.err.println("Exception on updatingClassifier");
+            e.printStackTrace();
+        }
     }
 
     private List<QualityRequirementPattern> toGenericList(List<QRPatternServer> l) {

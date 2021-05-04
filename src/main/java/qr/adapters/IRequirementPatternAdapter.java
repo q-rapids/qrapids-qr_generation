@@ -26,7 +26,9 @@ public interface IRequirementPatternAdapter {
 
     public void deleteRequirementPattern(long id);
 
-    public void updateClassifier(Integer schemaId, Integer id, String name, Integer pos, List<Integer> patternsList);
-
     public Classifier getClassifierById(long schemaId, long id);
+
+    public void createClassifier(long schemaId, String name, long parentId);
+
+    public void updateClassifier(long schemaId, long id, String name, Integer pos, List<Integer> patternsList);
 }
