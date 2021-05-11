@@ -18,6 +18,10 @@ public class ClassifierServer implements IServerModel{
     @Expose
     private String name;
 
+    @SerializedName("pos")
+    @Expose
+    private Integer pos;
+
     @SerializedName("internalClassifiers")
     @Expose
     private List<ClassifierServer> internalClassifiersServer;
@@ -40,6 +44,14 @@ public class ClassifierServer implements IServerModel{
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getPos() {
+        return pos;
+    }
+
+    public void setPos(Integer pos) {
+        this.pos = pos;
     }
 
     public List<ClassifierServer> getInternalClassifiersServer() {

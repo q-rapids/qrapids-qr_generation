@@ -1,6 +1,7 @@
 package qr.adapters.remote;
 
 import com.google.gson.JsonObject;
+import qr.adapters.models.ClassifierServer;
 import qr.adapters.models.ClassifierServerEdit;
 import qr.adapters.models.Forms;
 import qr.adapters.models.QRPatternServer;
@@ -49,6 +50,9 @@ public interface SOServices {
     @Headers("Content-Type: application/json")
     @PUT("schemas/{sid}/classifiers/{cid}")
     Call<Void> updateClassifier(@Path("sid") long schemaId, @Path("cid") long classifierId, @Body ClassifierServerEdit classifier);
+
+    @GET("schemas/{sid}/classifiers/{cid}")
+    Call<ClassifierServer> getClassifier(@Path("sid") long schemaId, @Path("cid") long classifierId);
 
 
 }

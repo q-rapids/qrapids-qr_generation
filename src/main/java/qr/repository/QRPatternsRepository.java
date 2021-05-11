@@ -51,15 +51,6 @@ public class QRPatternsRepository {
         return metrics.get(0);
     }
 
-    public Classifier getRootClassifier() {
-        Schema schema = ir.getSchemaByName("Schema Q-rapids");
-        return schema.getRootClassifiers().get(0); //Supposing that there is only one root classifier
-    }
-
-    public boolean importCatalogue(String json){
-        return ir.importCatalogue(json);
-    }
-
     public int createQRPattern(QualityRequirementPattern newPattern) {
         return ir.createRequirementPattern(newPattern);
     }
@@ -72,8 +63,72 @@ public class QRPatternsRepository {
         ir.deleteRequirementPattern(id);
     }
 
-    public void updateClassifier(Integer id, String name, Integer pos, List<Integer> patternsList) {
+    public Classifier getRootClassifier() {
         Schema schema = ir.getSchemaByName("Schema Q-rapids");
-        ir.updateClassifier(schema.getId(), id, name, pos, patternsList);
+        return schema.getRootClassifiers().get(0); //Supposing that there is only one root classifier
     }
+
+    public Classifier getClassifier(long id) {
+        Schema schema = ir.getSchemaByName("Schema Q-rapids");
+        return ir.getClassifierById(schema.getId(), id);
+    }
+
+    public void createClassifier(String name, long parentId) {
+        Schema schema = ir.getSchemaByName("Schema Q-rapids");
+        long parent = parentId;
+        if (parent == -1) { //-1 means that parent is root classifier
+            parent = schema.getRootClassifiers().get(0).getId();
+        }
+        ir.createClassifier(schema.getId(), name, parent);
+    }
+
+    public void updateClassifierWithPatterns(long id, String name, Integer pos, List<Integer> patternsList) {
+        Schema schema = ir.getSchemaByName("Schema Q-rapids");
+        ir.updateClassifierWithPatterns(schema.getId(), id, name, pos, patternsList);
+    }
+
+    public void updateAndMoveClassifier(long id, String name, long oldParentId, long newParentId) {
+        //As PABRE-WS only allows moving a classifier deleting it from its old parent and recreating it from its new
+        //parent, we have one method to only edit the classifier and another to edit and move it.
+        Schema schema = ir.getSchemaByName("Schema Q-rapids");
+
+        if (oldParentId == newParentId) {
+            //Edit the pattern without moving
+            ir.updateClassifier(schema.getId(), id, name);
+        } else {
+            long oldParent = oldParentId;
+            if (oldParent == -1) { //-1 means that parent is root classifier
+                oldParent = schema.getRootClassifiers().get(0).getId();
+            }
+            long newParent = newParentId;
+            if (newParent == -1) { //-1 means that parent is root classifier
+                newParent = schema.getRootClassifiers().get(0).getId();
+            }
+            //Edit and move the pattern
+            ir.updateAndMoveClassifier(schema.getId(), id, name, oldParent, newParent);
+        }
+    }
+
+    public void deleteClassifier(long id) {
+        Schema schema = ir.getSchemaByName("Schema Q-rapids");
+        long parent = 0;
+        for (Classifier classifier : schema.getRootClassifiers().get(0).getInternalClassifiers()) {
+            if (classifier.getId() == id) {
+                parent = schema.getRootClassifiers().get(0).getId();
+            } else {
+                for (Classifier c2 : classifier.getInternalClassifiers()) {
+                    if (c2.getId() == id) {
+                        parent = classifier.getId();
+                        break;
+                    }
+                }
+            }
+        }
+        ir.deleteClassifier(schema.getId(), id, parent);
+    }
+
+    public boolean importCatalogue(String json){
+        return ir.importCatalogue(json);
+    }
+
 }

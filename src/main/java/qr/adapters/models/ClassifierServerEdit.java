@@ -25,18 +25,42 @@ public class ClassifierServerEdit {
 
     @SerializedName("internalClassifiers")
     @Expose
-    private List<Integer> internalClassifiersId;
+    private List<ClassifierServerEdit> internalClassifiers;
 
     @SerializedName("requirementPatterns")
     @Expose
     private List<Integer> requirementPatternsId;
 
-    public ClassifierServerEdit(String name, Integer pos, List<Integer> requirementPatternsId) {
+    public ClassifierServerEdit(String name, Integer pos) {
         this.name = name;
         this.description = "";
         this.comments = "";
         this.pos = pos;
-        this.internalClassifiersId = null;
+        this.internalClassifiers = null;
+        this.requirementPatternsId = null;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getPos() {
+        return pos;
+    }
+
+    public void setPos(Integer pos) {
+        this.pos = pos;
+    }
+
+    public void setInternalClassifiers(List<ClassifierServerEdit> internalClassifiers) {
+        this.internalClassifiers = internalClassifiers;
+    }
+
+    public void setRequirementPatternsId(List<Integer> requirementPatternsId) {
         this.requirementPatternsId = requirementPatternsId;
     }
 
