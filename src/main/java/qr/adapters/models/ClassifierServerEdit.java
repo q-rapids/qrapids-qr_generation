@@ -40,6 +40,22 @@ public class ClassifierServerEdit {
         this.requirementPatternsId = null;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getPos() {
+        return pos;
+    }
+
+    public void setPos(Integer pos) {
+        this.pos = pos;
+    }
+
     public void setInternalClassifiers(List<ClassifierServerEdit> internalClassifiers) {
         this.internalClassifiers = internalClassifiers;
     }

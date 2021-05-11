@@ -70,8 +70,16 @@ public class QRGenerator {
         qrPatternsRepository.createClassifier(name, parentId);
     }
 
-    public void updateClassifier (Integer id, String name, Integer pos, List<Integer> patternsList) {
-        qrPatternsRepository.updateClassifier(id, name, pos, patternsList);
+    //Update a classifier that only contains patterns
+    //The list of patterns is replaced
+    public void updateClassifierWithPatterns(long id, String name, Integer pos, List<Integer> patternsList) {
+        qrPatternsRepository.updateClassifierWithPatterns(id, name, pos, patternsList);
+    }
+
+    //Update (and move, if oldParentId != newParentId) a classifier that contains other classifiers or patterns
+    //The classifier keeps all its patterns or child classifiers
+    public void updateAndMoveClassifier(long id, String name, long oldParentId, long newParentId) {
+        qrPatternsRepository.updateAndMoveClassifier(id, name, oldParentId, newParentId);
     }
 
     public void deleteClassifier(long id) {

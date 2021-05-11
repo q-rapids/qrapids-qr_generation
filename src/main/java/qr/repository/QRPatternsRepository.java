@@ -82,9 +82,31 @@ public class QRPatternsRepository {
         ir.createClassifier(schema.getId(), name, parent);
     }
 
-    public void updateClassifier(Integer id, String name, Integer pos, List<Integer> patternsList) {
+    public void updateClassifierWithPatterns(long id, String name, Integer pos, List<Integer> patternsList) {
         Schema schema = ir.getSchemaByName("Schema Q-rapids");
-        ir.updateClassifier(schema.getId(), id, name, pos, patternsList);
+        ir.updateClassifierWithPatterns(schema.getId(), id, name, pos, patternsList);
+    }
+
+    public void updateAndMoveClassifier(long id, String name, long oldParentId, long newParentId) {
+        //As PABRE-WS only allows moving a classifier deleting it from its old parent and recreating it from its new
+        //parent, we have one method to only edit the classifier and another to edit and move it.
+        Schema schema = ir.getSchemaByName("Schema Q-rapids");
+
+        if (oldParentId == newParentId) {
+            //Edit the pattern without moving
+            ir.updateClassifier(schema.getId(), id, name);
+        } else {
+            long oldParent = oldParentId;
+            if (oldParent == -1) { //-1 means that parent is root classifier
+                oldParent = schema.getRootClassifiers().get(0).getId();
+            }
+            long newParent = newParentId;
+            if (newParent == -1) { //-1 means that parent is root classifier
+                newParent = schema.getRootClassifiers().get(0).getId();
+            }
+            //Edit and move the pattern
+            ir.updateAndMoveClassifier(schema.getId(), id, name, oldParent, newParent);
+        }
     }
 
     public void deleteClassifier(long id) {

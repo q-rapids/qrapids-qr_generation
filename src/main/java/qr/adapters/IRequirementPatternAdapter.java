@@ -30,7 +30,11 @@ public interface IRequirementPatternAdapter {
 
     public void createClassifier(long schemaId, String name, long parentId);
 
-    public void updateClassifier(long schemaId, long id, String name, Integer pos, List<Integer> patternsList);
+    public void updateClassifierWithPatterns(long schemaId, long id, String name, Integer pos, List<Integer> patternsList);
+
+    public void updateClassifier(long schemaId, long id, String name);
+
+    public void updateAndMoveClassifier(long schemaId, long id, String name, long oldParentId, long newParentId);
 
     public void deleteClassifier(long schemaId, long id, long parentId);
 }
