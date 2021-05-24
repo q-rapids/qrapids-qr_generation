@@ -2,6 +2,7 @@ package qr;
 
 import qr.models.Alert;
 import qr.models.Classifier;
+import qr.models.Metric;
 import qr.repository.QRPatternsRepository;
 import qr.models.QualityRequirementPattern;
 
@@ -84,5 +85,13 @@ public class QRGenerator {
 
     public void deleteClassifier(long id) {
         qrPatternsRepository.deleteClassifier(id);
+    }
+
+    public List<Metric> getAllMetrics() {
+        return qrPatternsRepository.getAllMetrics();
+    }
+
+    public Metric getMetric(long id) {
+        return qrPatternsRepository.getMetric(id);
     }
 }
