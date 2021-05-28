@@ -1,6 +1,7 @@
 package qr.adapters;
 
 import qr.models.Classifier;
+import qr.models.Metric;
 import qr.models.QualityRequirementPattern;
 import qr.models.Schema;
 
@@ -37,4 +38,8 @@ public interface IRequirementPatternAdapter {
     public void updateAndMoveClassifier(long schemaId, long id, String name, long oldParentId, long newParentId);
 
     public void deleteClassifier(long schemaId, long id, long parentId);
+
+    public List<Metric> getAllMetrics();
+
+    public Metric getMetricById(long id);
 }

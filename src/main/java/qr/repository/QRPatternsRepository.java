@@ -5,6 +5,7 @@ import qr.adapters.RequirementPatternAdapterImpl;
 import qr.adapters.remote.ApiUtils;
 import qr.adapters.remote.SOServices;
 import qr.models.Classifier;
+import qr.models.Metric;
 import qr.models.Param;
 import qr.models.QualityRequirementPattern;
 import qr.models.Schema;
@@ -125,6 +126,14 @@ public class QRPatternsRepository {
             }
         }
         ir.deleteClassifier(schema.getId(), id, parent);
+    }
+
+    public List<Metric> getAllMetrics() {
+        return ir.getAllMetrics();
+    }
+
+    public Metric getMetric(long id) {
+        return ir.getMetricById(id);
     }
 
     public boolean importCatalogue(String json){

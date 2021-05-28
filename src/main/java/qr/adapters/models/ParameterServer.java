@@ -37,9 +37,13 @@ public class ParameterServer {
 
     public Param getParams() {
         Param p = new Param();
+        p.setId(this.id);
         p.setName(this.name);
         p.setDescription(this.description);
+        p.setCorrectnessCondition(this.correctnessCondition);
         p.setType(metric.getType());
+        p.setMetricId(metric.getId());
+        p.setMetricName(metric.getName());
         return p;
     }
 

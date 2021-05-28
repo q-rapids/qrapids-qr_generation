@@ -3,11 +3,13 @@ package qr.adapters;
 import com.google.gson.Gson;
 import qr.adapters.models.ClassifierServer;
 import qr.adapters.models.ClassifierServerEdit;
+import qr.adapters.models.MetricServer;
 import qr.adapters.models.QRPatternServer;
 import qr.adapters.models.QRPatternServerEdit;
 import qr.adapters.models.SchemaServer;
 import qr.adapters.remote.SOServices;
 import qr.models.Classifier;
+import qr.models.Metric;
 import qr.models.QualityRequirementPattern;
 import qr.models.Schema;
 import retrofit2.Response;
@@ -301,6 +303,39 @@ public class RequirementPatternAdapterImpl implements IRequirementPatternAdapter
             System.err.println("Exception on deletingClassifier");
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public List<Metric> getAllMetrics() {
+        List<MetricServer> metricServerList = null;
+        try {
+            Response<List<MetricServer>> s = mServices.getAllMetrics().execute();
+            metricServerList = s.body();
+        } catch (IOException e) {
+            System.err.println("Exception on gettingAllMetrics");
+            e.printStackTrace();
+        }
+
+        List<Metric> metricList = new ArrayList<>();
+        if (metricServerList != null) {
+            for (MetricServer ms : metricServerList) {
+                metricList.add(ms.toGenericModel());
+            }
+        }
+        return metricList;
+    }
+
+    @Override
+    public Metric getMetricById(long id) {
+        MetricServer metric = null;
+        try {
+            Response<MetricServer> s = mServices.getMetric(id).execute();
+            metric = s.body();
+        } catch (IOException e) {
+            System.err.println("Exception on gettingMetricByID");
+            e.printStackTrace();
+        }
+        return metric != null ? metric.toGenericModel() : null;
     }
 
     private ClassifierServerEdit toClassifierServerEdit(ClassifierServer classifier, int posOffset) {

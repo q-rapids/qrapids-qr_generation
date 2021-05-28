@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import qr.adapters.models.ClassifierServer;
 import qr.adapters.models.ClassifierServerEdit;
 import qr.adapters.models.Forms;
+import qr.adapters.models.MetricServer;
 import qr.adapters.models.QRPatternServer;
 import qr.adapters.models.QRPatternServerEdit;
 import qr.adapters.models.SchemaServer;
@@ -53,6 +54,12 @@ public interface SOServices {
 
     @GET("schemas/{sid}/classifiers/{cid}")
     Call<ClassifierServer> getClassifier(@Path("sid") long schemaId, @Path("cid") long classifierId);
+
+    @GET("metrics")
+    Call<List<MetricServer>> getAllMetrics();
+
+    @GET("metrics/{id}")
+    Call<MetricServer> getMetric(@Path("id") long id);
 
 
 }
