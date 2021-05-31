@@ -338,6 +338,31 @@ public class RequirementPatternAdapterImpl implements IRequirementPatternAdapter
         return metric != null ? metric.toGenericModel() : null;
     }
 
+    @Override
+    public boolean createMetric(Metric newMetric) {
+        MetricServer metricServer = new MetricServer();
+        metricServer.setName(newMetric.getName());
+        metricServer.setDescription(newMetric.getDescription());
+        metricServer.setComments("");
+        String type = newMetric.getType();
+        if (type.equals("integer") || type.equals("float")) {
+            metricServer.setMinValue(newMetric.getMinValue());
+            metricServer.setMaxValue(newMetric.getMaxValue());
+        } else if (type.equals("domain")) {
+            metricServer.setPossibleValues(newMetric.getPossibleValues());
+        }
+        try {
+            Response<Void> res = mServices.createMetric(type, metricServer).execute();
+            if (!res.isSuccessful()) {
+                return false;
+            }
+        } catch (IOException e) {
+            System.err.println("Exception on creatingMetric");
+            e.printStackTrace();
+        }
+        return true;
+    }
+
     private ClassifierServerEdit toClassifierServerEdit(ClassifierServer classifier, int posOffset) {
         ClassifierServerEdit classifierEdit1 = new ClassifierServerEdit(classifier.getName(), classifier.getPos()+posOffset);
         if (classifier.getRequirementPatternsServer().isEmpty()) { //if contains classifiers

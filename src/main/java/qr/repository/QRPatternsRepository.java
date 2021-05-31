@@ -136,6 +136,10 @@ public class QRPatternsRepository {
         return ir.getMetricById(id);
     }
 
+    public boolean createMetric(Metric metric) {
+        return ir.createMetric(metric);
+    }
+
     public boolean importCatalogue(String json){
         return ir.importCatalogue(json);
     }

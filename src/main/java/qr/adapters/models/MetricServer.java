@@ -20,6 +20,10 @@ public class MetricServer implements IServerModel{
     @Expose
     private String description;
 
+    @SerializedName("comments")
+    @Expose
+    private String comments;
+
     @SerializedName("type")
     @Expose
     private String type;
@@ -44,12 +48,52 @@ public class MetricServer implements IServerModel{
         return this.name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getDescription() {
         return this.description;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getComments() {
+        return this.comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
     public String getType() {
         return this.type;
+    }
+
+    public Float getMinValue() {
+        return this.minValue;
+    }
+
+    public void setMinValue(Float minValue) {
+        this.minValue = minValue;
+    }
+
+    public Float getMaxValue() {
+        return this.maxValue;
+    }
+
+    public void setMaxValue(Float maxValue) {
+        this.maxValue = maxValue;
+    }
+
+    public List<String> getPossibleValues() {
+        return this.possibleValues;
+    }
+
+    public void setPossibleValues(List<String> possibleValues) {
+        this.possibleValues = possibleValues;
     }
 
     @Override
