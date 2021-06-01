@@ -69,5 +69,8 @@ public interface SOServices {
     @PUT("metrics/{id}")
     Call<Void> updateMetric(@Path("id") long id, @Body MetricServer metric);
 
+    @DELETE("metrics/{id}")
+    Call<Void> deleteMetric(@Path("id") long id);
+
 
 }

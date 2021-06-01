@@ -388,6 +388,16 @@ public class RequirementPatternAdapterImpl implements IRequirementPatternAdapter
         return true;
     }
 
+    @Override
+    public void deleteMetric(long id) {
+        try {
+            mServices.deleteMetric(id).execute();
+        } catch (IOException e) {
+            System.err.println("Exception on deletingMetric");
+            e.printStackTrace();
+        }
+    }
+
     private ClassifierServerEdit toClassifierServerEdit(ClassifierServer classifier, int posOffset) {
         ClassifierServerEdit classifierEdit1 = new ClassifierServerEdit(classifier.getName(), classifier.getPos()+posOffset);
         if (classifier.getRequirementPatternsServer().isEmpty()) { //if contains classifiers

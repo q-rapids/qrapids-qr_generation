@@ -144,6 +144,10 @@ public class QRPatternsRepository {
         return ir.updateMetric(id, metric);
     }
 
+    public void deleteMetric(long id) {
+        ir.deleteMetric(id);
+    }
+
     public boolean importCatalogue(String json){
         return ir.importCatalogue(json);
     }
