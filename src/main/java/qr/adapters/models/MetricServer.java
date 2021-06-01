@@ -10,7 +10,7 @@ public class MetricServer implements IServerModel{
 
     @SerializedName("id")
     @Expose
-    private int id;
+    private Integer id;
 
     @SerializedName("name")
     @Expose

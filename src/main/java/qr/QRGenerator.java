@@ -98,4 +98,8 @@ public class QRGenerator {
     public boolean createMetric(Metric metric) {
         return qrPatternsRepository.createMetric(metric);
     }
+
+    public boolean updateMetric(long id, Metric metric) {
+        return qrPatternsRepository.updateMetric(id, metric);
+    }
 }

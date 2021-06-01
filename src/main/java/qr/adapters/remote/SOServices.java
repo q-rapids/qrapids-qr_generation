@@ -65,5 +65,9 @@ public interface SOServices {
     @POST("metrics")
     Call<Void> createMetric(@Query("type") String type, @Body MetricServer metric);
 
+    @Headers("Content-Type: application/json")
+    @PUT("metrics/{id}")
+    Call<Void> updateMetric(@Path("id") long id, @Body MetricServer metric);
+
 
 }

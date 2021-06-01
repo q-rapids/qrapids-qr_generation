@@ -44,4 +44,6 @@ public interface IRequirementPatternAdapter {
     public Metric getMetricById(long id);
 
     public boolean createMetric(Metric newMetric);
+
+    public boolean updateMetric(long id, Metric metric);
 }
