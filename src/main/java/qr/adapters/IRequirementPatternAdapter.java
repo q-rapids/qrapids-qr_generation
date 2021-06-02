@@ -47,5 +47,5 @@ public interface IRequirementPatternAdapter {
 
     public boolean updateMetric(long id, Metric metric);
 
-    public void deleteMetric(long id);
+    public boolean deleteMetric(long id);
 }

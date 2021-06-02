@@ -389,13 +389,17 @@ public class RequirementPatternAdapterImpl implements IRequirementPatternAdapter
     }
 
     @Override
-    public void deleteMetric(long id) {
+    public boolean deleteMetric(long id) {
         try {
-            mServices.deleteMetric(id).execute();
+            Response<Void> res = mServices.deleteMetric(id).execute();
+            if (!res.isSuccessful()) {
+                return false;
+            }
         } catch (IOException e) {
             System.err.println("Exception on deletingMetric");
             e.printStackTrace();
         }
+        return true;
     }
 
     private ClassifierServerEdit toClassifierServerEdit(ClassifierServer classifier, int posOffset) {

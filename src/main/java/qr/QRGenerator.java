@@ -103,7 +103,7 @@ public class QRGenerator {
         return qrPatternsRepository.updateMetric(id, metric);
     }
 
-    public void deleteMetric(long id) {
-        qrPatternsRepository.deleteMetric(id);
+    public boolean deleteMetric(long id) {
+        return qrPatternsRepository.deleteMetric(id);
     }
 }
