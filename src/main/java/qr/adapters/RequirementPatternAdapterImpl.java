@@ -73,6 +73,7 @@ public class RequirementPatternAdapterImpl implements IRequirementPatternAdapter
 
     @Override
     public void updateRequirementPattern(long id, QualityRequirementPattern editedPattern) {
+        editedPattern.setId((int) id);
         QRPatternServer originalPattern = null;
         try {
             Response<QRPatternServer> s = mServices.getAllPatterns(id).execute();
