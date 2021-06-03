@@ -42,4 +42,10 @@ public interface IRequirementPatternAdapter {
     public List<Metric> getAllMetrics();
 
     public Metric getMetricById(long id);
+
+    public boolean createMetric(Metric newMetric);
+
+    public boolean updateMetric(long id, Metric metric);
+
+    public boolean deleteMetric(long id);
 }

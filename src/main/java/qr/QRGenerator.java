@@ -94,4 +94,16 @@ public class QRGenerator {
     public Metric getMetric(long id) {
         return qrPatternsRepository.getMetric(id);
     }
+
+    public boolean createMetric(Metric metric) {
+        return qrPatternsRepository.createMetric(metric);
+    }
+
+    public boolean updateMetric(long id, Metric metric) {
+        return qrPatternsRepository.updateMetric(id, metric);
+    }
+
+    public boolean deleteMetric(long id) {
+        return qrPatternsRepository.deleteMetric(id);
+    }
 }

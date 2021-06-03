@@ -73,6 +73,7 @@ public class RequirementPatternAdapterImpl implements IRequirementPatternAdapter
 
     @Override
     public void updateRequirementPattern(long id, QualityRequirementPattern editedPattern) {
+        editedPattern.setId((int) id);
         QRPatternServer originalPattern = null;
         try {
             Response<QRPatternServer> s = mServices.getAllPatterns(id).execute();
@@ -336,6 +337,70 @@ public class RequirementPatternAdapterImpl implements IRequirementPatternAdapter
             e.printStackTrace();
         }
         return metric != null ? metric.toGenericModel() : null;
+    }
+
+    @Override
+    public boolean createMetric(Metric newMetric) {
+        MetricServer metricServer = new MetricServer();
+        metricServer.setName(newMetric.getName());
+        metricServer.setDescription(newMetric.getDescription());
+        metricServer.setComments("");
+        String type = newMetric.getType();
+        if (type.equals("integer") || type.equals("float")) {
+            metricServer.setMinValue(newMetric.getMinValue());
+            metricServer.setMaxValue(newMetric.getMaxValue());
+        } else if (type.equals("domain")) {
+            metricServer.setPossibleValues(newMetric.getPossibleValues());
+        }
+        try {
+            Response<Void> res = mServices.createMetric(type, metricServer).execute();
+            if (!res.isSuccessful()) {
+                return false;
+            }
+        } catch (IOException e) {
+            System.err.println("Exception on creatingMetric");
+            e.printStackTrace();
+        }
+        return true;
+    }
+
+    @Override
+    public boolean updateMetric(long id, Metric metric) {
+        MetricServer metricServer = new MetricServer();
+        metricServer.setName(metric.getName());
+        metricServer.setDescription(metric.getDescription());
+        metricServer.setComments("");
+        String type = metric.getType();
+        if (type.equals("integer") || type.equals("float")) {
+            metricServer.setMinValue(metric.getMinValue());
+            metricServer.setMaxValue(metric.getMaxValue());
+        } else if (type.equals("domain")) {
+            metricServer.setPossibleValues(metric.getPossibleValues());
+        }
+        try {
+            Response<Void> res = mServices.updateMetric(id, metricServer).execute();
+            if (!res.isSuccessful()) {
+                return false;
+            }
+        } catch (IOException e) {
+            System.err.println("Exception on updatingMetric");
+            e.printStackTrace();
+        }
+        return true;
+    }
+
+    @Override
+    public boolean deleteMetric(long id) {
+        try {
+            Response<Void> res = mServices.deleteMetric(id).execute();
+            if (!res.isSuccessful()) {
+                return false;
+            }
+        } catch (IOException e) {
+            System.err.println("Exception on deletingMetric");
+            e.printStackTrace();
+        }
+        return true;
     }
 
     private ClassifierServerEdit toClassifierServerEdit(ClassifierServer classifier, int posOffset) {

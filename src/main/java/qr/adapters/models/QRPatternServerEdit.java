@@ -4,6 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import qr.models.FixedPart;
 import qr.models.Form;
+import qr.models.Param;
 import qr.models.QualityRequirementPattern;
 
 import java.text.SimpleDateFormat;
@@ -71,19 +72,7 @@ public class QRPatternServerEdit {
             this.comments = qrPattern.getComments();
             this.description = qrPattern.getDescription();
 
-            VersionEdit version = this.versions.get(0);
-            version.setGoal(qrPattern.getGoal());
-            //add update of costFunctions if necessary
-
-            for (int i=0; i< qrPattern.getForms().size(); i++){
-                Form qrpForm = qrPattern.getForms().get(i);
-                FormEdit form = version.getForms().get(i);
-                form.setName(qrpForm.getName());
-                form.setDescription(qrpForm.getDescription());
-                form.setComments(qrpForm.getComments());
-
-                form.getFixedPart().setPatternText(qrpForm.getFixedPart().getFormText());
-            }
+            this.versions.get(0).updateValues(qrPattern);
         }
 
     }
@@ -180,12 +169,13 @@ public class QRPatternServerEdit {
             this.forms = forms;
         }
 
-        public void setGoal(String goal) {
-            this.goal = goal;
-        }
+        public void updateValues(QualityRequirementPattern qrPattern) {
+            this.goal = qrPattern.getGoal();
+            //add update of costFunctions if necessary
 
-        public List<FormEdit> getForms() {
-            return forms;
+            for (int i=0; i<qrPattern.getForms().size(); i++){
+                this.forms.get(i).updateValues(qrPattern.getForms().get(i));
+            }
         }
 
     }
@@ -270,20 +260,12 @@ public class QRPatternServerEdit {
             this.fixedPart = new FixedPartEdit(formServer.getFixedPart());
         }
 
-        public void setName(String name) {
-            this.name = name;
-        }
+        public void updateValues(Form qrpForm) {
+            this.name = qrpForm.getName();
+            this.description = qrpForm.getDescription();
+            this.comments = qrpForm.getComments();
 
-        public void setDescription(String description) {
-            this.description = description;
-        }
-
-        public void setComments(String comments) {
-            this.comments = comments;
-        }
-
-        public FixedPartEdit getFixedPart() {
-            return fixedPart;
+            this.fixedPart.updateValues(qrpForm.getFixedPart());
         }
 
     }
@@ -330,14 +312,14 @@ public class QRPatternServerEdit {
             this.available = true;
             this.statsNumInstances = 0;
             this.artifactsRelation = "";
-            //List<ParameterEdit> parameters = new ArrayList<>();
+            List<ParameterEdit> parameters = new ArrayList<>();
             //parameters start
-            //for(int i=0; i<fixedPart.getParameters().size(); i++) {
-            //    ParameterEdit p = new ParameterEdit(fixedPart.getParameters().get(i));
-            //    parameters.add(p);
-            //}
+            for(int i=0; i<fixedPart.getParameters().size(); i++) {
+                ParameterEdit p = new ParameterEdit(fixedPart.getParameters().get(i));
+                parameters.add(p);
+            }
             //parameters end
-            //this.parameters = parameters;
+            this.parameters = parameters;
         }
 
         public FixedPartEdit(FixedPartServer fixedPart) {
@@ -358,8 +340,12 @@ public class QRPatternServerEdit {
             this.parameters = parameters;
         }
 
-        public void setPatternText(String patternText) {
-            this.patternText = patternText;
+        public void updateValues(FixedPart qrpFixedPart) {
+            this.patternText = qrpFixedPart.getFormText();
+
+            for (int i=0; i<qrpFixedPart.getParameters().size(); i++){
+                this.parameters.get(i).updateValues(qrpFixedPart.getParameters().get(i));
+            }
         }
 
     }
@@ -386,12 +372,27 @@ public class QRPatternServerEdit {
         @Expose
         private int metricId;
 
+        public ParameterEdit(Param parameter) {
+            //no id
+            this.name = parameter.getName();
+            this.correctnessCondition = parameter.getCorrectnessCondition();
+            this.description = parameter.getDescription();
+            this.metricId = parameter.getMetricId();
+        }
+
         public ParameterEdit(ParameterServer parameterServer) {
             this.id = parameterServer.getId();
             this.name = parameterServer.getName();
             this.correctnessCondition = parameterServer.getCorrectnessCondition();
             this.description = parameterServer.getDescription();
             this.metricId = parameterServer.getMetric().getId();
+        }
+
+        public void updateValues(Param qrpParameter) {
+            this.name = qrpParameter.getName();
+            this.correctnessCondition = qrpParameter.getCorrectnessCondition();
+            this.description = qrpParameter.getDescription();
+            this.metricId = qrpParameter.getMetricId();
         }
 
     }
