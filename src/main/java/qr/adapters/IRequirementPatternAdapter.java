@@ -23,7 +23,7 @@ public interface IRequirementPatternAdapter {
 
     public int createRequirementPattern(QualityRequirementPattern newPattern);
 
-    public void updateRequirementPattern(long id, QualityRequirementPattern editedPattern);
+    public boolean updateRequirementPattern(long id, QualityRequirementPattern editedPattern);
 
     public void deleteRequirementPattern(long id);
 

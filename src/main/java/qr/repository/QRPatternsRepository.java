@@ -56,8 +56,8 @@ public class QRPatternsRepository {
         return ir.createRequirementPattern(newPattern);
     }
 
-    public void updateQRPattern(long id, QualityRequirementPattern editedPattern) {
-        ir.updateRequirementPattern(id, editedPattern);
+    public boolean updateQRPattern(long id, QualityRequirementPattern editedPattern) {
+        return ir.updateRequirementPattern(id, editedPattern);
     }
 
     public void deleteQRPattern(long id) {

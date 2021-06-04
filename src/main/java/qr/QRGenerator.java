@@ -55,8 +55,8 @@ public class QRGenerator {
         return qrPatternsRepository.createQRPattern(newPattern);
     }
 
-    public void updateQRPattern(long id, QualityRequirementPattern editedPattern) {
-        qrPatternsRepository.updateQRPattern(id, editedPattern);
+    public boolean updateQRPattern(long id, QualityRequirementPattern editedPattern) {
+        return qrPatternsRepository.updateQRPattern(id, editedPattern);
     }
 
     public void deleteQRPattern(long id) {

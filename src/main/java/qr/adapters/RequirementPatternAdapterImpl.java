@@ -63,7 +63,11 @@ public class RequirementPatternAdapterImpl implements IRequirementPatternAdapter
         Integer newId = null;
         try {
             Response<JsonObject> s = mServices.createPattern(p).execute();
-            newId = s.body().get("id").getAsInt();
+            if (s.isSuccessful()) {
+                newId = s.body().get("id").getAsInt();
+            } else {
+                newId = -1;
+            }
         } catch (IOException e) {
             System.err.println("Exception on creatingPattern");
             e.printStackTrace();
@@ -72,7 +76,7 @@ public class RequirementPatternAdapterImpl implements IRequirementPatternAdapter
     }
 
     @Override
-    public void updateRequirementPattern(long id, QualityRequirementPattern editedPattern) {
+    public boolean updateRequirementPattern(long id, QualityRequirementPattern editedPattern) {
         editedPattern.setId((int) id);
         QRPatternServer originalPattern = null;
         try {
@@ -82,12 +86,16 @@ public class RequirementPatternAdapterImpl implements IRequirementPatternAdapter
             if(originalPattern != null) {
                 QRPatternServerEdit.PatternEdit p = new QRPatternServerEdit.PatternEdit(originalPattern);
                 p.updateValues(editedPattern);
-                mServices.updatePattern(id, p).execute();
+                Response<Void> s2 = mServices.updatePattern(id, p).execute();
+                if (!s2.isSuccessful()) {
+                    return false;
+                }
             }
         } catch (IOException e) {
             System.err.println("Exception on updatingPattern");
             e.printStackTrace();
         }
+        return true;
     }
 
     @Override
