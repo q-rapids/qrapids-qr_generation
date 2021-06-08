@@ -6,7 +6,6 @@ import qr.adapters.models.ClassifierServerEdit;
 import qr.adapters.models.Forms;
 import qr.adapters.models.MetricServer;
 import qr.adapters.models.QRPatternServer;
-import qr.adapters.models.QRPatternServerEdit;
 import qr.adapters.models.SchemaServer;
 import retrofit2.Call;
 import retrofit2.http.*;
@@ -39,11 +38,11 @@ public interface SOServices {
 
     @Headers("Content-Type: application/json")
     @POST("patterns")
-    Call<JsonObject> createPattern(@Body QRPatternServerEdit.PatternEdit pattern);
+    Call<JsonObject> createPattern(@Body Forms.QRPatternCreation pattern);
 
     @Headers("Content-Type: application/json")
     @PUT("patterns/{id}")
-    Call<Void> updatePattern(@Path("id") long id, @Body QRPatternServerEdit.PatternEdit pattern);
+    Call<Void> updatePattern(@Path("id") long id, @Body Forms.QRPatternCreation pattern);
 
     @DELETE("patterns/{id}")
     Call<Void> deletePattern(@Path("id") long id);

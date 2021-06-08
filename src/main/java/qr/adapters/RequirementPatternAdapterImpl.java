@@ -3,9 +3,9 @@ package qr.adapters;
 import com.google.gson.Gson;
 import qr.adapters.models.ClassifierServer;
 import qr.adapters.models.ClassifierServerEdit;
+import qr.adapters.models.Forms;
 import qr.adapters.models.MetricServer;
 import qr.adapters.models.QRPatternServer;
-import qr.adapters.models.QRPatternServerEdit;
 import qr.adapters.models.SchemaServer;
 import qr.adapters.remote.SOServices;
 import qr.models.Classifier;
@@ -59,7 +59,7 @@ public class RequirementPatternAdapterImpl implements IRequirementPatternAdapter
 
     @Override
     public int createRequirementPattern(QualityRequirementPattern newPattern) {
-        QRPatternServerEdit.PatternEdit p = new QRPatternServerEdit.PatternEdit(newPattern);
+        Forms.QRPatternCreation p = new Forms.QRPatternCreation(newPattern);
         Integer newId = null;
         try {
             Response<JsonObject> s = mServices.createPattern(p).execute();
@@ -84,7 +84,7 @@ public class RequirementPatternAdapterImpl implements IRequirementPatternAdapter
             originalPattern = s.body();
 
             if(originalPattern != null) {
-                QRPatternServerEdit.PatternEdit p = new QRPatternServerEdit.PatternEdit(originalPattern);
+                Forms.QRPatternCreation p = new Forms.QRPatternCreation(originalPattern);
                 p.updateValues(editedPattern);
                 Response<Void> s2 = mServices.updatePattern(id, p).execute();
                 if (!s2.isSuccessful()) {
