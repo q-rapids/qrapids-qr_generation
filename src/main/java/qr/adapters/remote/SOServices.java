@@ -1,7 +1,10 @@
 package qr.adapters.remote;
 
 import com.google.gson.JsonObject;
+import qr.adapters.models.ClassifierServer;
+import qr.adapters.models.ClassifierServerEdit;
 import qr.adapters.models.Forms;
+import qr.adapters.models.MetricServer;
 import qr.adapters.models.QRPatternServer;
 import qr.adapters.models.SchemaServer;
 import retrofit2.Call;
@@ -32,6 +35,41 @@ public interface SOServices {
 
     @GET("schemas")
     Call<List<SchemaServer>> getSchemaByName(@Query("names") List<String> names);
+
+    @Headers("Content-Type: application/json")
+    @POST("patterns")
+    Call<JsonObject> createPattern(@Body Forms.QRPatternCreation pattern);
+
+    @Headers("Content-Type: application/json")
+    @PUT("patterns/{id}")
+    Call<Void> updatePattern(@Path("id") long id, @Body Forms.QRPatternCreation pattern);
+
+    @DELETE("patterns/{id}")
+    Call<Void> deletePattern(@Path("id") long id);
+
+    @Headers("Content-Type: application/json")
+    @PUT("schemas/{sid}/classifiers/{cid}")
+    Call<Void> updateClassifier(@Path("sid") long schemaId, @Path("cid") long classifierId, @Body ClassifierServerEdit classifier);
+
+    @GET("schemas/{sid}/classifiers/{cid}")
+    Call<ClassifierServer> getClassifier(@Path("sid") long schemaId, @Path("cid") long classifierId);
+
+    @GET("metrics")
+    Call<List<MetricServer>> getAllMetrics();
+
+    @GET("metrics/{id}")
+    Call<MetricServer> getMetric(@Path("id") long id);
+
+    @Headers("Content-Type: application/json")
+    @POST("metrics")
+    Call<Void> createMetric(@Query("type") String type, @Body MetricServer metric);
+
+    @Headers("Content-Type: application/json")
+    @PUT("metrics/{id}")
+    Call<Void> updateMetric(@Path("id") long id, @Body MetricServer metric);
+
+    @DELETE("metrics/{id}")
+    Call<Void> deleteMetric(@Path("id") long id);
 
 
 }

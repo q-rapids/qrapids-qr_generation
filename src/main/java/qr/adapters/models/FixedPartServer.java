@@ -3,6 +3,10 @@ package qr.adapters.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import qr.models.FixedPart;
+import qr.models.Param;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FixedPartServer implements IServerModel {
     @SerializedName("id")
@@ -12,6 +16,10 @@ public class FixedPartServer implements IServerModel {
     @SerializedName("formText")
     @Expose
     private String formText;
+
+    @SerializedName("parameters")
+    @Expose
+    private List<ParameterServer> parameters;
 
     public String getId() {
         return id;
@@ -29,8 +37,22 @@ public class FixedPartServer implements IServerModel {
         this.formText = formText;
     }
 
+    public List<ParameterServer> getParameters() {
+        return parameters;
+    }
+
+    public void setParameters(List<ParameterServer> parameters) {
+        this.parameters = parameters;
+    }
+
     @Override
     public FixedPart toGenericModel() {
-        return new FixedPart(formText);
+        List<Param> paramList = new ArrayList<>();
+        if (parameters != null) {
+            for (ParameterServer parameter : parameters) {
+                paramList.add(parameter.getParams());
+            }
+        }
+        return new FixedPart(formText, paramList);
     }
 }
