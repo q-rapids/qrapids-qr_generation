@@ -74,6 +74,10 @@ public class Forms {
             this.versions = versions;
         }
 
+        /**
+         * Update the attributes of a QRPatternCreation instance with a given QualityRequirementPattern.
+         * @param qrPattern QualityRequirementPattern with the new attributes
+         */
         public void updateValues(QualityRequirementPattern qrPattern) {
             this.id = qrPattern.getId();
             this.name = qrPattern.getName();
@@ -177,6 +181,10 @@ public class Forms {
             this.forms = forms;
         }
 
+        /**
+         * Update the attributes of a VersionCreation instance with a given QualityRequirementPattern.
+         * @param qrPattern QualityRequirementPattern with the new attributes
+         */
         public void updateValues(QualityRequirementPattern qrPattern) {
             this.goal = qrPattern.getGoal();
             //add update of costFunctions if necessary
@@ -268,6 +276,10 @@ public class Forms {
             this.fixedPart = new FixedPartCreation(formServer.getFixedPart());
         }
 
+        /**
+         * Update the attributes of a FormCreation instance with a given Form.
+         * @param qrpForm Form with the new attributes
+         */
         public void updateValues(Form qrpForm) {
             this.name = qrpForm.getName();
             this.description = qrpForm.getDescription();
@@ -348,6 +360,10 @@ public class Forms {
             this.parameters = parameters;
         }
 
+        /**
+         * Update the attributes of a FixedPartCreation instance with a given FixedPart.
+         * @param qrpFixedPart FixedPart with the new attributes
+         */
         public void updateValues(FixedPart qrpFixedPart) {
             this.patternText = qrpFixedPart.getFormText();
 
@@ -396,6 +412,10 @@ public class Forms {
             this.metricId = parameterServer.getMetric().getId();
         }
 
+        /**
+         * Update the attributes of a ParameterCreation instance with a given Param.
+         * @param qrpParameter Param with the new attributes
+         */
         public void updateValues(Param qrpParameter) {
             this.name = qrpParameter.getName();
             this.correctnessCondition = qrpParameter.getCorrectnessCondition();
